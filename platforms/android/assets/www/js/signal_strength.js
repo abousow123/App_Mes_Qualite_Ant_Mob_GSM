@@ -3,10 +3,10 @@
  * récuper la valeur de la puissance du signal (-110 à -50) en décibel (Dbm)  --> getSignalDbm()
  */
 
+var signalDbm = 0;
 
 function getSignalDbm() {
-    var signalDbm = null;
-
+    
     window.SignalStrength.dbm(
             function (measuredDbm) {
                 signalDbm = measuredDbm;
