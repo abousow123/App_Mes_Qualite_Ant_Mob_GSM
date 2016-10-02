@@ -131,7 +131,8 @@ function printSignalAndBatterie() {
     labelSignalBatterieStatus.innerHTML = labelSignalBatterieStatus.innerHTML + '<br><br>'
             + 'signal en dBm: ' + getSignalDbm() + '<br>'
             + ' batterie: ' + getBatterieLevel() + '%<br>'
-            + ' branchée: ' + isPlugged;
+            + ' branchée: ' + isPlugged + '<br>'
+            + ' date: ' + getDate();
 }
 
 //Stop l'affichage du niveau du signal et de l'état de la batterie
