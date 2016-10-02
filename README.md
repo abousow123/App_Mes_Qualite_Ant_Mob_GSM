@@ -9,6 +9,8 @@
 
 ## Installation
 
+Open a terminal
+
 `git clone https://github.com/abousow123/App_Mes_Qualite_Ant_Mob_GSM.git`
 
 `cd App_Mes_Qualite_Ant_Mob_GSM`
