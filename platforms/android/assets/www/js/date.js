@@ -1,7 +1,6 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Propose le service getDate() 
+ * qui retourne la date et heure courante du téléphone
  */
 
 var dateStr = '';
