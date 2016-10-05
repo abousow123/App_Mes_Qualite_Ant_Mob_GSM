@@ -39,13 +39,16 @@
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="SignalStrength">
+        <param name="android-package" value="org.apache.cordova.plugin.SignalStrength" />
+        <param name="onload" value="true" />
+    </feature>
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="SignalStrength">
-        <param name="android-package" value="org.apache.cordova.plugin.SignalStrength" />
-        <param name="onload" value="true" />
+    <feature name="SQLitePlugin">
+        <param name="android-package" value="com.nolanlawson.cordova.sqlite.SQLitePlugin" />
     </feature>
     <name>Monitoring de la Qualite du signal GSM</name>
     <description>

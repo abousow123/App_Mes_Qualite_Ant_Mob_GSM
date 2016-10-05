@@ -106,12 +106,13 @@ function btnAnnulerCollecteAction() {
 }
 
 function btnExporterCollecteAction() {
-    //TODO
-    $("#popupBtnAnnuler").popup("open");
-    setTimeout(function () {
-        $("#popupBtnAnnuler").popup("close");
-    }, 3000);
+//    TODO
+//    $("#popupBtnAnnuler").popup("open");
+//    setTimeout(function () {
+//        $("#popupBtnAnnuler").popup("close");
+//    }, 3000);
 
+    createTmpFile();
 }
 
 //Répète l'affichage du niveau du signal et de l'état de la batterie toutes les 5000 millisecondes
