@@ -6,13 +6,21 @@
 
 
 var txtToWrite = "Hi";
-
+var createFileSuccess = false;
+var CSVFileEntry = null;
 
 /*
  * 
  * @returns {nothing}
  */
-function createTmpFile() {
+
+function createCSVAndSendByMail(data) {
+    formatToCSVString(data);
+    createCSVFile();
+}
+
+
+function createCSVFile() {
 
     window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 102, onSuccessLoadFs, onErrorLoadFs);
 
@@ -42,19 +50,17 @@ function writeFile(fileEntry, dataObj) {
         fileWriter.onwriteend = function () {
             alert("Successful file write...");
             readFile(fileEntry);
+            createFileSuccess = true;
+            CSVFileEntry = fileEntry;
         };
 
         fileWriter.onerror = function (e) {
             alert("Failed file write: " + e.toString());
         };
 
-        // If data object is not passed in,
-        // create a new Blob instead.
-        if (!dataObj) {
-            doInsertOnDB('4h5mn', -83, 96, 1, '4h5mn-83961');
-            getData(formatToCSVString);
-            dataObj = new Blob(['' + txtToWrite], {type: 'text/plain'});
-        }
+        // create a new Blob 
+        
+        dataObj = new Blob(['' + txtToWrite], {type: 'text/plain'});
 
         fileWriter.write(dataObj);
     });
@@ -76,6 +82,7 @@ function readFile(fileEntry) {
 }
 
 
+
 /*
  * Format a JSON table into à CSV String and 
  * store it to txtToWrite variable defined above.
@@ -83,16 +90,15 @@ function readFile(fileEntry) {
  * @returns {Nothing}
  */
 function formatToCSVString(data) {
-    txtToWrite = "J'ai besoin de savoir si tu vois cette alerte la";
-    alert("inFormatToCVSstring");
-//    txtToWrite = "Horodatage,Niveau du Signal(en Db),Niveau de Batterie,En charge,Hashkey";
-//    for (var i = 0; i < data.length; i++) {
-//        txtToWrite += data[i].horodatage + ","
-//                + data[i].niveau_signal + ","
-//                + data[i].niveau_batterie + ","
-//                + data[i].branchee + ","
-//                + data[i].hashkey + "\n";
-//    }
+    doInsertOnDB('4h5mn', -83, 96, 1, '4h5mn-83961');
+    txtToWrite = "Horodatage,Niveau du Signal(en Db),Niveau de Batterie,En charge,Hashkey";
+    for (var i = 0; i < data.length; i++) {
+        txtToWrite += data[i].horodatage + ","
+                + data[i].niveau_signal + ","
+                + data[i].niveau_batterie + ","
+                + data[i].branchee + ","
+                + data[i].hashkey + "\n";
+    }
 }
 
 /*

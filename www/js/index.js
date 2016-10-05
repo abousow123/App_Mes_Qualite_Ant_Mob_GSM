@@ -114,12 +114,7 @@ function btnAnnulerCollecteAction() {
 
 function btnExporterCollecteAction() {
 //    TODO
-//    $("#popupBtnAnnuler").popup("open");
-//    setTimeout(function () {
-//        $("#popupBtnAnnuler").popup("close");
-//    }, 3000);
-
-    createTmpFile();
+    getData(createCSVAndSendByMail);
 }
 
 //Répète l'affichage du niveau du signal et de l'état de la batterie toutes les 5000 millisecondes

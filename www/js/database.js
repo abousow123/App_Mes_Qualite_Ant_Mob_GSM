@@ -53,7 +53,7 @@ function readAll() {
         this.niveau_signal = niveau_signal;
         this.niveau_batterie = niveau_batterie;
         this.branchee = branchee;
-        this.haskhkey = hashkey;
+        this.hashkey = hashkey;
     };
     var len = null;
     //permise me to exploit asynchronous transfer mode

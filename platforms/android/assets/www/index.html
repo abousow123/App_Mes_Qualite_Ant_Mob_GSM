@@ -30,7 +30,6 @@
                 <h1>GSM Signal Monitoring</h1>
             </div>
             <div data-role="main" class="ui-content">
-                
                         <h2>Call details</h2>
                             <ul data-role="listview" data-inset="true">
                                 <li data-role="list-divider">Marque</li>
@@ -67,10 +66,11 @@
                 <h1>GSM Signal Monitoring</h1>
             </div>
             <div data-role="main" class="ui-content" id="idMonitoringPageMain">
-                <p>
+<!--                <p>
                     Please scroll down to see much result when started the monitoring.
                 </p>
-                <hr>
+                <hr>-->
+                 <div id="graphics"></div>
                 <p id="idSignalText"></p>
             </div>
             <div data-role="footer" data-position="fixed" style="text-align: center">
@@ -92,6 +92,7 @@
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
+        <script type="text/javascript" src="js/Highcharts-4.2.7/js/highcharts.js"></script>
         <script type="text/javascript" id="jqm-trans-disable">
             /* For having a faster transition */
             $(document).on("mobileinit", function () {
@@ -107,6 +108,7 @@
         <script type="text/javascript" src="js/date.js"></script>
         <script type="text/javascript" src="js/signal_strength.js"></script>
         <script type="text/javascript" src="js/database.js"></script>
+        <script type="text/javascript" src="js/graphics.js"></script>
         <script type="text/javascript" src="js/csvfile.js"></script>
     </body>
 </html>
