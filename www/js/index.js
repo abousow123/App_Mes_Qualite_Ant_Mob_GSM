@@ -65,7 +65,11 @@ var labelSignalBatterieStatus = document.getElementById("idSignalText");
 /********** Variables non view (juste pour garder des valeurs) *************/
 var status = 'off';
 var processWritting = null;
-
+var processForCourbe = null;
+//pour garder les donnees dans des array pour signal et le battry
+var tabBattry = [0];
+var tabSignal = [0];
+var callcopte = 0;
 
 
 
@@ -85,13 +89,15 @@ function btncollecterDonneesAction() {
 }
 
 function btnArreterReprendreAction() {
-    if (status == 'off') {
+    if (status === 'off') {
         status = 'on';
         btnArreterReprendre.innerHTML = "Arrêter";
-        labelSignalBatterieStatus.innerHTML = labelSignalBatterieStatus.innerHTML + '<br>' + 'starting...';
+        labelSignalBatterieStatus.innerHTML = 'starting...';
         repeatPrintingSigAndBat();
+        retraceCourbe();
     } else {
         stopPrintingSignalAndBatterie();
+        stopRetraceCourbe();
         status = 'off';
         btnArreterReprendre.innerHTML = "Reprendre";
         labelSignalBatterieStatus.innerHTML = labelSignalBatterieStatus.innerHTML + '<br><br><hr><font color="Blue">' + 'pause</font><hr>';
@@ -100,6 +106,7 @@ function btnArreterReprendreAction() {
 
 function btnAnnulerCollecteAction() {
     stopPrintingSignalAndBatterie();
+    stopRetraceCourbe();
     status = 'off';
     btnArreterReprendre.innerHTML = "Commencer";
     labelSignalBatterieStatus.innerHTML = '';
@@ -128,14 +135,34 @@ function printSignalAndBatterie() {
         isPlugged = 'oui';
     else
         isPlugged = 'non';
-    labelSignalBatterieStatus.innerHTML = labelSignalBatterieStatus.innerHTML + '<br><br>'
-            + 'signal en dBm: ' + getSignalDbm() + '<br>'
+    labelSignalBatterieStatus.innerHTML ='signal en dBm: ' + getSignalDbm() + '<br>'
             + ' batterie: ' + getBatterieLevel() + '%<br>'
             + ' branchée: ' + isPlugged + '<br>'
             + ' date: ' + getDate();
+    tabBattry.push(getBatterieLevel());
+    // 0dms ----> 100% good it's mean the signal is perfect
+    tabSignal.push(getSignalDbm());
 }
-
 //Stop l'affichage du niveau du signal et de l'état de la batterie
 function stopPrintingSignalAndBatterie() {
     clearInterval(processWritting);
+}
+
+// this funcfunction  is for the periode call tratraceCourbe on graphics.js file 
+// every 30 second;
+function retraceCourbe(){
+    processForCourbe = setInterval(traceCourbe(tabBattry,tabSignal),30000);
+}
+
+//Stop of the repeat call tratraceCourben function
+function stopRetraceCourbe(){
+    clearInterval(processForCourbe);
+}
+
+// function for the real color to print in the <p> element
+function getColor(dms){
+    //TODO:
+    switch (dms){
+        
+    }
 }
