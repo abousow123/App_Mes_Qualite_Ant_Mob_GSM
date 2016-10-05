@@ -395,6 +395,14 @@ module.exports = [
         "clobbers": [
             "signal-strength"
         ]
+    },
+    {
+        "id": "cordova-plugin-sqlite-2.sqlitePlugin",
+        "file": "plugins/cordova-plugin-sqlite-2/dist/sqlite-plugin.js",
+        "pluginId": "cordova-plugin-sqlite-2",
+        "clobbers": [
+            "sqlitePlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -414,8 +422,9 @@ module.exports.metadata =
     "cordova-plugin-network-information": "1.3.1-dev",
     "cordova-plugin-splashscreen": "4.0.1-dev",
     "cordova-plugin-console": "1.0.5-dev",
+    "org.apache.cordova.signal-strength": "1.0.0",
     "cordova-plugin-whitelist": "1.3.0",
-    "org.apache.cordova.signal-strength": "1.0.0"
+    "cordova-plugin-sqlite-2": "1.0.4"
 };
 // BOTTOM OF METADATA
 });
