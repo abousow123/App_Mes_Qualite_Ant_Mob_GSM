@@ -1,13 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Propose le service qui cree le fichier qui cree et ecris dans le
+ * fichier csv puis l'envoi par mail par l'intermediaire
+ * du service email,
+ * il prend en argument un objet JSON des données enregistrées
+ * dans la base de données ==> createCSVAndSendByMail
+ *
+ *  A utiliser donc comme argument dans la fonction getData, le service
+ *  de récupération des données de la BD (dans database.js)
+ *
+ *  e.g: getData(createCSVAndSendByMail)
  */
 
 
-var txtToWrite = "Hi";
-var createFileSuccess = false;
-var CSVFileEntry = null;
+var txtToWrite = ""; //String que sera ecrit dans le fichier CSV
 
 /*
  *
@@ -22,14 +27,16 @@ function createCSVAndSendByMail(data) {
 
 function createCSVFile() {
 
-    window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 102, onSuccessLoadFs, onErrorLoadFs);
+    window.requestFileSystem(window.PERSISTENT, 5 * 1024 * 102, onSuccessLoadFs, onErrorLoadFs);
 
 }
 
 
 function onSuccessLoadFs(fs) {
     alert('file system open: ' + fs.name);
-    createFile(fs.root, "newTempFile.txt", false);
+    window.resolveLocalFileSystemURL(cordova.file.externalCacheDirectory, function (entry) {
+        createFile(entry, "test.csv", false);
+    });
 }
 
 
@@ -51,7 +58,7 @@ function writeFile(fileEntry, dataObj) {
             alert("Successful file write...");
             readFile(fileEntry);
             createFileSuccess = true;
-            sendMail(fileEntry.fullPath);
+            sendMail(fileEntry.toURL());
         };
 
         fileWriter.onerror = function (e) {
@@ -72,8 +79,7 @@ function readFile(fileEntry) {
         var reader = new FileReader();
 
         reader.onloadend = function () {
-            alert("Successful file read: \n" + fileEntry.fullPath + "\n" + this.result);
-//            displayFileData(fileEntry.fullPath + ": " + this.result);
+            alert("Successful file read: \n" + fileEntry.fullPath + "\n" + fileEntry.toURL() + "\n" + this.result);
         };
 
         reader.readAsText(file);
@@ -86,17 +92,26 @@ function readFile(fileEntry) {
 /*
  * Format a JSON table into à CSV String and
  * store it to txtToWrite variable defined above.
+ * Transforme un objet JSON contenant les données
+ * enregistrées dans la base de données et
+ * les transformes en une String au format CSV.
  * @param {JSON table} data
  * @returns {Nothing}
  */
 function formatToCSVString(data) {
-    doInsertOnDB('4h5mn', -83, 96, 1, '4h5mn-83961');
-    txtToWrite = "Horodatage,Niveau du Signal(en Db),Niveau de Batterie,En charge,Hashkey";
+    var curentdateTime = getDate();
+    doInsertOnDB(curentdateTime, -83, 96, 1, curentdateTime + '-83961');
+    txtToWrite = "Horodatage,Niveau du Signal(en Db),Niveau de Batterie(Décibel),En charge,Hashkey\n";
     for (var i = 0; i < data.length; i++) {
+        var enCharge = null;
+        if (data[i].branchee)
+            enCharge = 'Oui';
+        else
+            enCharge = 'Non';
         txtToWrite += data[i].horodatage + ","
                 + data[i].niveau_signal + ","
                 + data[i].niveau_batterie + ","
-                + data[i].branchee + ","
+                + enCharge + ","
                 + data[i].hashkey + "\n";
     }
 }

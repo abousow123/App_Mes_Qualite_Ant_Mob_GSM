@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos; data: gap: https://ssl.gstatic.com &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
+        <style>
+            /* For avoiding title truncation in wp8 */
+            .ui-header .ui-title {
+                overflow: visible !important;
+            }
+            /* For fixing the absolute position issue for the default cordova gen page*/
+            #cjp-accordion1 .app {
+                left: 5px !important;
+                margin: 5px !important;
+                position: relative !important;
+            }
+        </style>
+        <title>Hello World</title>
+    </head>
+    <body>
+
+        <!--La page d'accueil (de chargemement des informations-->
+        <div data-role="page" id="idHomePage">
+            <div data-role="header" data-position="fixed" id="idHomePageHeader" style="text-align: center">
+                <h1>GSM Signal Monitoring</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <h2>Call details</h2>
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider">Marque</li>
+                    <li><span id="marque"></span></li>
+
+                    <li data-role="list-divider">Model</li>
+                    <li><span  id="model"></span></li>
+
+                    <li data-role="list-divider">Numéro de série</li>
+                    <li><span  id="serial"></span></li>
+
+                    <li data-role="list-divider">Opérateur</li>
+                    <li><span id="carrierName"></span></li>
+
+                    <li data-role="list-divider">Code GSM</li>
+                    <li><span id="gsm"></span></li>
+                </ul>
+                <!--@Pape ajout********************** test database*************************************-->
+                <button onclick="doInsertOnDB('4h5mn', -83, 96, 1, '4h5mn-83961')">insert</button>
+                <button onclick="getData(test)">lire</button>
+                <button onclick="doDeleteAll()">delete</button>
+                <!--************************************************************************* -->
+            </div>
+            <div data-role="footer" data-position="fixed" style="text-align: center">
+                <button class="ui-btn-active" id="btnCollecterDonnees">Collecter<br>Données</button>
+            </div>
+
+        </div>
+
+        <!--La page de monitoring ici (@laye and @badiane)-->
+        <div data-role="page" id="idMonitoringPage">
+            <div data-role="header" data-position="fixed" id="idHomePageHeader">
+                <a href="#" class="ui-btn ui-icon-back ui-btn-icon-notext" data-rel="back"></a>
+                <h1>GSM Signal Monitoring</h1>
+            </div>
+            <div data-role="main" class="ui-content" id="idMonitoringPageMain">
+                <!--                <p>
+                                    Please scroll down to see much result when started the monitoring.
+                                </p>
+                                <hr>-->
+                <div id="graphics"></div>
+                <p id="idSignalText"></p>
+            </div>
+            <div data-role="footer" data-position="fixed" style="text-align: center">
+                <div data-role="controlgroup" data-type="horizontal">
+                    <button class="ui-btn-active" id="btnStartPauseCollecte">Commencer</button>
+                    <button class="ui-btn-active" id="btnAnnulerCollecte">Annuler</button>
+                    <button class="ui-btn-active" id="btnExpCollecte">Exporter</button>
+                </div>
+            </div>
+            <div data-role="popup" id="popupBtnAnnuler">
+                <p>Pas encore disponible.</p>
+            </div>
+        </div>
+
+        <div data-role="popup" id="popupBtnAnnuler">
+            <p>Pas encore disponible.</p>
+        </div>
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
+        <script type="text/javascript" src="js/Highcharts-4.2.7/js/highcharts.js"></script>
+        <script type="text/javascript" id="jqm-trans-disable">
+                    /* For having a faster transition */
+                    $(document).on("mobileinit", function () {
+                        $.mobile.defaultPageTransition = "slide";
+                        $.mobile.defaultDialogTransition = "flow";
+                    });
+        </script>
+        <script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/device_details.js"></script>
+        <script type="text/javascript" src="js/sim_details.js"></script>
+        <script type="text/javascript" src="js/batterie_status.js"></script>
+        <script type="text/javascript" src="js/date.js"></script>
+        <script type="text/javascript" src="js/signal_strength.js"></script>
+        <script type="text/javascript" src="js/database.js"></script>
+        <script type="text/javascript" src="js/graphics.js"></script>
+        <script type="text/javascript" src="js/csvfile.js"></script>
+        <script type="text/javascript" src="js/email.js"></script>
+    </body>
+</html>

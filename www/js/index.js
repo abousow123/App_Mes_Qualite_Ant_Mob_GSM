@@ -77,7 +77,7 @@ var tabSignal = [-110];
 function displayDeviceAndSimInfo() {
     labelMarque.innerHTML = "" + getDeviceMarque();
     labelModel.innerHTML = "" + getDeviceModel();
-    labelSerial.innerHTML = "" + getDeviceModel();
+    labelSerial.innerHTML = "" + getDeviceSerial();
     labelCarrierName.innerHTML = "" + getCarrierName();
     labelGSMCode.innerHTML = "" + getGSMCode();
 }
