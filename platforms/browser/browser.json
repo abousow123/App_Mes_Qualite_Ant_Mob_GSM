@@ -73,9 +73,6 @@
         "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
-        },
         "de.appplant.cordova.plugin.email-composer": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
@@ -83,6 +80,9 @@
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
         "cordova-plugin-email-composer": {
+            "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         }
     },
@@ -572,6 +572,14 @@
             "id": "cordova-plugin-email-composer.EmailComposerProxy",
             "pluginId": "cordova-plugin-email-composer",
             "runs": true
+        },
+        {
+            "file": "plugins/org.apache.cordova.signal-strength/www/signal-strength.js",
+            "id": "org.apache.cordova.signal-strength.signal-strength",
+            "pluginId": "org.apache.cordova.signal-strength",
+            "clobbers": [
+                "signal-strength"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -590,9 +598,9 @@
         "cordova-plugin-splashscreen": "4.0.1-dev",
         "cordova-plugin-sqlite-2": "1.0.4",
         "cordova-plugin-vibration": "2.1.3-dev",
-        "cordova-plugin-whitelist": "1.3.0",
         "de.appplant.cordova.plugin.email-composer": "0.8.2",
         "org.apache.cordova.signal-strength": "1.0.0",
-        "cordova-plugin-email-composer": "0.8.3"
+        "cordova-plugin-email-composer": "0.8.3",
+        "cordova-plugin-whitelist": "1.3.0"
     }
 }

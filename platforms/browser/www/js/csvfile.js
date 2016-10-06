@@ -34,7 +34,6 @@ function createCSVFile() {
 
 function onSuccessLoadFs(fs) {
     alert('file system open: ' + fs.name);
-//    createFile(fs.root, "test.csv", false);
     window.resolveLocalFileSystemURL(cordova.file.externalCacheDirectory, function (entry) {
         createFile(entry, "test.csv", false);
     });
