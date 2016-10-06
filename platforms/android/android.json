@@ -53,6 +53,10 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"SignalStrength\"><param name=\"android-package\" value=\"org.apache.cordova.plugin.SignalStrength\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
@@ -141,6 +145,9 @@
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
         "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
+        },
+        "org.apache.cordova.signal-strength": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
         "cordova-plugin-whitelist": {
@@ -451,6 +458,14 @@
                 "cordova"
             ],
             "runs": true
+        },
+        {
+            "id": "org.apache.cordova.signal-strength.signal-strength",
+            "file": "plugins/org.apache.cordova.signal-strength/www/signal-strength.js",
+            "pluginId": "org.apache.cordova.signal-strength",
+            "clobbers": [
+                "signal-strength"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -467,6 +482,7 @@
         "cordova-plugin-email-composer": "0.8.3",
         "cordova-plugin-compat": "1.0.0",
         "cordova-plugin-file": "4.3.1-dev",
+        "org.apache.cordova.signal-strength": "1.0.0",
         "cordova-plugin-whitelist": "1.3.0"
     }
 }
