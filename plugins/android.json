@@ -49,6 +49,9 @@
         "cordova-plugin-email-composer": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
+        "org.apache.cordova.signal-strength": {
+            "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         }

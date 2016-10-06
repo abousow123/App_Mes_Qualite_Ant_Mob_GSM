@@ -404,6 +404,14 @@ module.exports = [
             "cordova.plugins.email",
             "plugin.email"
         ]
+    },
+    {
+        "id": "org.apache.cordova.signal-strength.signal-strength",
+        "file": "plugins/org.apache.cordova.signal-strength/www/signal-strength.js",
+        "pluginId": "org.apache.cordova.signal-strength",
+        "clobbers": [
+            "signal-strength"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -425,6 +433,7 @@ module.exports.metadata =
     "cordova-plugin-console": "1.0.5-dev",
     "cordova-plugin-sqlite-2": "1.0.4",
     "cordova-plugin-email-composer": "0.8.3",
+    "org.apache.cordova.signal-strength": "1.0.0",
     "cordova-plugin-whitelist": "1.3.0"
 };
 // BOTTOM OF METADATA

@@ -29,7 +29,7 @@ function createCSVFile() {
 
 function onSuccessLoadFs(fs) {
     alert('file system open: ' + fs.name);
-    createFile(fs.root, "newTempFile.txt", false);
+    createFile(fs.root, "test.csv", false);
 }
 
 
@@ -51,7 +51,7 @@ function writeFile(fileEntry, dataObj) {
             alert("Successful file write...");
             readFile(fileEntry);
             createFileSuccess = true;
-            sendMail(fileEntry.fullPath);
+            sendMail(fileEntry.toURL());
         };
 
         fileWriter.onerror = function (e) {
@@ -72,7 +72,7 @@ function readFile(fileEntry) {
         var reader = new FileReader();
 
         reader.onloadend = function () {
-            alert("Successful file read: \n" + fileEntry.fullPath + "\n" + this.result);
+            alert("Successful file read: \n" + fileEntry.fullPath + "\n" + fileEntry.toURL() + "\n" + this.result);
 //            displayFileData(fileEntry.fullPath + ": " + this.result);
         };
 
