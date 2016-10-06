@@ -118,7 +118,6 @@ function btnExporterCollecteAction() {
 function repeatPrintingSigAndBat() {
     processWritting = setInterval(printSignalAndBatterie, 5000);
 }
-
 //Affiche le niveau du signal et l'état de la batterie actuels
 function printSignalAndBatterie() {
 
@@ -151,12 +150,12 @@ function stopRetraceCourbe() {
 }
 
 // function for the real color to print in the <p> element
-function getColor(dms) {
-    //TODO:
-    switch (dms) {
-
-    }
-}
+//function getColor(dms) {
+//    //TODO:
+//    switch (dms) {
+//
+//    }
+//}
 // to get the values for the arrays and call the fucntion traceCourbe()
 function getValuesForCharts() {
     // add the battry level value
