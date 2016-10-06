@@ -42,10 +42,6 @@
     <feature name="EmailComposer">
         <param name="android-package" value="de.appplant.cordova.emailcomposer.EmailComposer" />
     </feature>
-    <feature name="SignalStrength">
-        <param name="android-package" value="org.apache.cordova.plugin.SignalStrength" />
-        <param name="onload" value="true" />
-    </feature>
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
@@ -79,4 +75,6 @@
     <splash density="port-mdpi" src="www/img/splash-xxxhdpi.png" />
     <splash density="port-xhdpi" src="www/img/splash-xxxhdpi.png" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="AndroidExtraFilesystems" value="files,cache, sdcard, cache-external, files-external" />
 </widget>

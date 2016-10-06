@@ -22,14 +22,21 @@ function createCSVAndSendByMail(data) {
 
 function createCSVFile() {
 
-    window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 102, onSuccessLoadFs, onErrorLoadFs);
+    window.requestFileSystem(window.PERSISTENT, 5 * 1024 * 102, onSuccessLoadFs, onErrorLoadFs);
 
+//    window.resolveLocalFileSystemURL(externalCacheDirectory, function (entry) {
+//        alert('externalCacheDirectory open: ' + entry.toURL());
+//        createFile(entry, "test.csv", false);
+//    });
 }
 
 
 function onSuccessLoadFs(fs) {
     alert('file system open: ' + fs.name);
     createFile(fs.root, "test.csv", false);
+//    window.resolveLocalFileSystemURL(externalCacheDirectory, function (entry) {
+//        createFile(entry, "test.csv", false);
+//    });
 }
 
 
@@ -91,12 +98,17 @@ function readFile(fileEntry) {
  */
 function formatToCSVString(data) {
     doInsertOnDB('4h5mn', -83, 96, 1, '4h5mn-83961');
-    txtToWrite = "Horodatage,Niveau du Signal(en Db),Niveau de Batterie,En charge,Hashkey";
+    txtToWrite = "Horodatage,Niveau du Signal(en Db),Niveau de Batterie(Décibel),En charge,Hashkey\n";
     for (var i = 0; i < data.length; i++) {
+        var enCharge = null;
+        if (data[i].branchee)
+            enCharge = 'Oui';
+        else
+            enCharge = 'Non';
         txtToWrite += data[i].horodatage + ","
                 + data[i].niveau_signal + ","
                 + data[i].niveau_batterie + ","
-                + data[i].branchee + ","
+                + enCharge + ","
                 + data[i].hashkey + "\n";
     }
 }
