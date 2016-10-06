@@ -39,6 +39,7 @@ var app = {
 
         //@pape :ajout
         displayDeviceAndSimInfo();
+        retraceCourbe();
     }
 };
 app.initialize();
@@ -68,10 +69,7 @@ var processWritting = null;
 var processForCourbe = null;
 //pour garder les donnees dans des array pour signal et le battry
 var tabBattry = [0];
-var tabSignal = [0];
-var callcopte = 0;
-
-
+var tabSignal = [-110];
 
 /********************************* Déclaration des fonctions **************************************/
 
@@ -114,7 +112,12 @@ function btnAnnulerCollecteAction() {
 
 function btnExporterCollecteAction() {
 //    TODO
-    getData(createCSVAndSendByMail);
+//    $("#popupBtnAnnuler").popup("open");
+//    setTimeout(function () {
+//        $("#popupBtnAnnuler").popup("close");
+//    }, 3000);
+
+    createTmpFile();
 }
 
 //Répète l'affichage du niveau du signal et de l'état de la batterie toutes les 5000 millisecondes
@@ -135,9 +138,7 @@ function printSignalAndBatterie() {
             + ' batterie: ' + getBatterieLevel() + '%<br>'
             + ' branchée: ' + isPlugged + '<br>'
             + ' date: ' + getDate();
-    tabBattry.push(getBatterieLevel());
-    // 0dms ----> 100% good it's mean the signal is perfect
-    tabSignal.push(getSignalDbm());
+
 }
 //Stop l'affichage du niveau du signal et de l'état de la batterie
 function stopPrintingSignalAndBatterie() {
@@ -145,9 +146,9 @@ function stopPrintingSignalAndBatterie() {
 }
 
 // this funcfunction  is for the periode call tratraceCourbe on graphics.js file
-// every 30 second;
+// every 3 second;
 function retraceCourbe() {
-    processForCourbe = setInterval(traceCourbe(tabBattry, tabSignal), 30000);
+    processForCourbe = setInterval(getValuesForCharts, 3000);
 }
 
 //Stop of the repeat call tratraceCourben function
@@ -161,4 +162,12 @@ function getColor(dms) {
     switch (dms) {
 
     }
+}
+// to get the values for the arrays and call the fucntion traceCourbe()
+function getValuesForCharts() {
+    // add the battry level value
+    tabBattry.push(getBatterieLevel());
+    // 0dms ----> 100% good it's mean the signal is perfect
+    tabSignal.push(getSignalDbm());
+    traceCourbe(tabBattry, tabSignal);
 }
