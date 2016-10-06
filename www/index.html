@@ -23,35 +23,34 @@
         <title>Hello World</title>
     </head>
     <body>
-
         <!--La page d'accueil (de chargemement des informations-->
         <div data-role="page" id="idHomePage">
             <div data-role="header" data-position="fixed" id="idHomePageHeader" style="text-align: center">
                 <h1>GSM Signal Monitoring</h1>
             </div>
             <div data-role="main" class="ui-content">
-                        <h2>Call details</h2>
-                            <ul data-role="listview" data-inset="true">
-                                <li data-role="list-divider">Marque</li>
-                                <li><span id="marque"></span></li>
-                                
-                                <li data-role="list-divider">Model</li>
-                                <li><span  id="model"></span></li>
-                                
-                                <li data-role="list-divider">Numéro de série</li>
-                                <li><span  id="serial"></span></li>
-                                
-                                <li data-role="list-divider">Opérateur</li>
-                                <li><span id="carrierName"></span></li>
-                                
-                                <li data-role="list-divider">Code GSM</li>
-                                <li><span id="gsm"></span></li>
-                            </ul>
-               <!--@Pape ajout********************** test database*************************************-->
-               <button onclick="doInsertOnDB('4h5mn',-83,96,1,'4h5mn-83961')">insert</button>
-               <button onclick="getData(test)">lire</button>
-               <button onclick="doDeleteAll()">delete</button>
-               <!--************************************************************************* -->
+                <h2>Call details</h2>
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider">Marque</li>
+                    <li><span id="marque"></span></li>
+
+                    <li data-role="list-divider">Model</li>
+                    <li><span  id="model"></span></li>
+
+                    <li data-role="list-divider">Numéro de série</li>
+                    <li><span  id="serial"></span></li>
+
+                    <li data-role="list-divider">Opérateur</li>
+                    <li><span id="carrierName"></span></li>
+
+                    <li data-role="list-divider">Code GSM</li>
+                    <li><span id="gsm"></span></li>
+                </ul>
+                <!--@Pape ajout********************** test database*************************************-->
+                <button onclick="doInsertOnDB('4h5mn', -83, 96, 1, '4h5mn-83961')">insert</button>
+                <button onclick="getData(test)">lire</button>
+                <button onclick="doDeleteAll()">delete</button>
+                <!--************************************************************************* -->
             </div>
             <div data-role="footer" data-position="fixed" style="text-align: center">
                 <button class="ui-btn-active" id="btnCollecterDonnees">Collecter<br>Données</button>
@@ -59,18 +58,14 @@
 
         </div>
 
-        <!--La page de monitoring ici (@laye and @badiane)--> 
+        <!--La page de monitoring ici (@laye and @badiane)-->
         <div data-role="page" id="idMonitoringPage">
             <div data-role="header" data-position="fixed" id="idHomePageHeader">
                 <a href="#" class="ui-btn ui-icon-back ui-btn-icon-notext" data-rel="back"></a>
                 <h1>GSM Signal Monitoring</h1>
             </div>
             <div data-role="main" class="ui-content" id="idMonitoringPageMain">
-<!--                <p>
-                    Please scroll down to see much result when started the monitoring.
-                </p>
-                <hr>-->
-                 <div id="graphics"></div>
+                <div id="graphics"></div>
                 <p id="idSignalText"></p>
             </div>
             <div data-role="footer" data-position="fixed" style="text-align: center">
@@ -94,12 +89,12 @@
         <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
         <script type="text/javascript" src="js/Highcharts-4.2.7/js/highcharts.js"></script>
         <script type="text/javascript" id="jqm-trans-disable">
-            /* For having a faster transition */
-            $(document).on("mobileinit", function () {
-                $.mobile.defaultPageTransition = "slide";
-                $.mobile.defaultDialogTransition = "flow";
-            });
-        </script>            
+                    /* For having a faster transition */
+                    $(document).on("mobileinit", function () {
+                        $.mobile.defaultPageTransition = "slide";
+                        $.mobile.defaultDialogTransition = "flow";
+                    });
+        </script>
         <script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/device_details.js"></script>
