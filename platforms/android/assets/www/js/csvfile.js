@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -10,7 +10,7 @@ var createFileSuccess = false;
 var CSVFileEntry = null;
 
 /*
- * 
+ *
  * @returns {nothing}
  */
 
@@ -51,15 +51,15 @@ function writeFile(fileEntry, dataObj) {
             alert("Successful file write...");
             readFile(fileEntry);
             createFileSuccess = true;
-            CSVFileEntry = fileEntry;
+            sendMail(fileEntry.fullPath);
         };
 
         fileWriter.onerror = function (e) {
             alert("Failed file write: " + e.toString());
         };
 
-        // create a new Blob 
-        
+        // create a new Blob
+
         dataObj = new Blob(['' + txtToWrite], {type: 'text/plain'});
 
         fileWriter.write(dataObj);
@@ -84,7 +84,7 @@ function readFile(fileEntry) {
 
 
 /*
- * Format a JSON table into à CSV String and 
+ * Format a JSON table into à CSV String and
  * store it to txtToWrite variable defined above.
  * @param {JSON table} data
  * @returns {Nothing}
@@ -102,7 +102,7 @@ function formatToCSVString(data) {
 }
 
 /*
- * 
+ *
  * onErrorXXX functions
  */
 

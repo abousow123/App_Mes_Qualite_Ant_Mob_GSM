@@ -389,19 +389,20 @@ module.exports = [
         ]
     },
     {
-        "id": "org.apache.cordova.signal-strength.signal-strength",
-        "file": "plugins/org.apache.cordova.signal-strength/www/signal-strength.js",
-        "pluginId": "org.apache.cordova.signal-strength",
-        "clobbers": [
-            "signal-strength"
-        ]
-    },
-    {
         "id": "cordova-plugin-sqlite-2.sqlitePlugin",
         "file": "plugins/cordova-plugin-sqlite-2/dist/sqlite-plugin.js",
         "pluginId": "cordova-plugin-sqlite-2",
         "clobbers": [
             "sqlitePlugin"
+        ]
+    },
+    {
+        "id": "cordova-plugin-email-composer.EmailComposer",
+        "file": "plugins/cordova-plugin-email-composer/www/email_composer.js",
+        "pluginId": "cordova-plugin-email-composer",
+        "clobbers": [
+            "cordova.plugins.email",
+            "plugin.email"
         ]
     }
 ];
@@ -422,9 +423,9 @@ module.exports.metadata =
     "cordova-plugin-network-information": "1.3.1-dev",
     "cordova-plugin-splashscreen": "4.0.1-dev",
     "cordova-plugin-console": "1.0.5-dev",
-    "org.apache.cordova.signal-strength": "1.0.0",
-    "cordova-plugin-whitelist": "1.3.0",
-    "cordova-plugin-sqlite-2": "1.0.4"
+    "cordova-plugin-sqlite-2": "1.0.4",
+    "cordova-plugin-email-composer": "0.8.3",
+    "cordova-plugin-whitelist": "1.3.0"
 };
 // BOTTOM OF METADATA
 });
