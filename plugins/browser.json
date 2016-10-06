@@ -13,9 +13,6 @@
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
-        "cordova-plugin-contacts": {
-            "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
-        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
@@ -23,9 +20,6 @@
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
         "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
-        },
-        "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
         "cordova-plugin-globalization": {
@@ -43,10 +37,10 @@
         "cordova-plugin-sqlite-2": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
-        "cordova-plugin-vibration": {
+        "cordova-plugin-email-composer": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
-        "cordova-plugin-email-composer": {
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
         "cordova-plugin-whitelist": {
@@ -55,9 +49,6 @@
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
-        },
-        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         }
     }

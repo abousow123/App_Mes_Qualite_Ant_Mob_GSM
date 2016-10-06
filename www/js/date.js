@@ -1,11 +1,17 @@
-/* 
- * Propose le service getDate() 
+/*
+ * Propose le service getDate()
  * qui retourne la date et heure courante du téléphone
  */
+
+document.addEventListener('deviceready', runDateTimeUpdaterProcess, false);
 
 var dateStr = '';
 
 function getDate() {
+    return dateStr;
+}
+
+function updateDateTime() {
     navigator.globalization.dateToString(
             new Date(),
             function (date) {
@@ -18,6 +24,8 @@ function getDate() {
             },
             {formatLength: 'short', selector: 'date and time'}
     );
+}
 
-    return dateStr;
+function runDateTimeUpdaterProcess() {
+    var process = setInterval(updateDateTime, 200);
 }
