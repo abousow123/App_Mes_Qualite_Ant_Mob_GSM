@@ -15,22 +15,22 @@
  */
 
 var app = {
-// Application Constructor
-    initialize: function () {
+    // Application Constructor
+    initialize: function() {
         this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function () {
+    bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function () {
+    onDeviceReady: function() {
 
         btncollecterDonnees.addEventListener("click", btncollecterDonneesAction);
         btnArreterReprendre.addEventListener("click", btnArreterReprendreAction);
@@ -83,7 +83,7 @@ function displayDeviceAndSimInfo() {
 }
 
 function btncollecterDonneesAction() {
-    $.mobile.changePage("#idMonitoringPage", {transition: "slide"});
+    $.mobile.changePage("#idMonitoringPage", { transition: "slide" });
 }
 
 function btnArreterReprendreAction() {
@@ -118,7 +118,6 @@ function btnExporterCollecteAction() {
 function repeatPrintingSigAndBat() {
     processWritting = setInterval(printSignalAndBatterie, 5000);
 }
-
 //Affiche le niveau du signal et l'état de la batterie actuels
 function printSignalAndBatterie() {
 
@@ -128,10 +127,10 @@ function printSignalAndBatterie() {
         isPlugged = 'oui';
     else
         isPlugged = 'non';
-    labelSignalBatterieStatus.innerHTML = 'signal en dBm: ' + getSignalDbm() + '<br>'
-            + ' batterie: ' + getBatterieLevel() + '%<br>'
-            + ' branchée: ' + isPlugged + '<br>'
-            + ' date: ' + getDate();
+    labelSignalBatterieStatus.innerHTML = 'signal en dBm: ' + getSignalDbm() + '<br>' +
+        ' batterie: ' + getBatterieLevel() + '%<br>' +
+        ' branchée: ' + isPlugged + '<br>' +
+        ' date: ' + getDate();
 
 }
 //Stop l'affichage du niveau du signal et de l'état de la batterie
@@ -151,12 +150,12 @@ function stopRetraceCourbe() {
 }
 
 // function for the real color to print in the <p> element
-function getColor(dms) {
-    //TODO:
-    switch (dms) {
-
-    }
-}
+//function getColor(dms) {
+//    //TODO:
+//    switch (dms) {
+//
+//    }
+//}
 // to get the values for the arrays and call the fucntion traceCourbe()
 function getValuesForCharts() {
     // add the battry level value
