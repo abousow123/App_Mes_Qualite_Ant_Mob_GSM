@@ -38,9 +38,11 @@ var app = {
         btnAnnulerCollecte.addEventListener("click", btnAnnulerCollecteAction);
         btnExporterCollecte.addEventListener("click", btnExporterCollecteAction);
 
-        //@pape :ajout
-        displayDeviceAndSimInfo();
-        retraceCourbe();
+        setTimeout(function () {
+            //@pape :ajout
+            displayDeviceAndSimInfo();
+            retraceCourbe();
+        }, 100);
     }
 };
 app.initialize();
@@ -70,8 +72,8 @@ var status = 'off';
 var processWritting = null;
 var processForCourbe = null;
 //pour garder les donnees dans des array pour signal et le battry
-var tabBattry = [0];
-var tabSignal = [-110];
+var tabBattry = [];
+var tabSignal = [];
 
 /********************************* Déclaration des fonctions **************************************/
 
@@ -144,9 +146,9 @@ function stopPrintingSignalAndBatterie() {
 }
 
 // this funcfunction  is for the periode call tratraceCourbe on graphics.js file
-// every 3 second;
+// every 30 second;
 function retraceCourbe() {
-    processForCourbe = setInterval(getValuesForCharts, 3000);
+    processForCourbe = setInterval(getValuesForCharts, 30000);
 }
 
 //Stop of the repeat call tratraceCourben function

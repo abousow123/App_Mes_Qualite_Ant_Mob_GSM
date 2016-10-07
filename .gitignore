@@ -1,4 +1,4 @@
-/platforms
-/hooks
-/test
+platforms/
+hooks/
+test/
 
