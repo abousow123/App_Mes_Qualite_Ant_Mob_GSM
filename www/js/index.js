@@ -38,9 +38,11 @@ var app = {
         btnAnnulerCollecte.addEventListener("click", btnAnnulerCollecteAction);
         btnExporterCollecte.addEventListener("click", btnExporterCollecteAction);
 
-        //@pape :ajout
-        displayDeviceAndSimInfo();
-        retraceCourbe();
+        setTimeout(function () {
+            //@pape :ajout
+            displayDeviceAndSimInfo();
+            retraceCourbe();
+        }, 100);
     }
 };
 app.initialize();

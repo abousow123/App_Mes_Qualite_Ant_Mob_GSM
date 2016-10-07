@@ -1,4 +1,4 @@
-/* 
+/*
  * Propose les services pour :
  * récuper le code GSM du réseau ==> getGSMCode()
  * récuper le nom de l'opérateur de l'utilisateur ==> getgetCarrierName()
@@ -13,15 +13,15 @@ function getSimInfo() {
 var gsmCode = "N/A";
 var carrierName = "N/A";
 
-function getSimInfoOnSucces() {
+function getSimInfoOnSucces(result) {
     console.log(result);
     gsmCode = result.mnc;
-    carrierName = result.carrierName;    
+    carrierName = result.carrierName;
 }
 
-function getSimInfoOnError() {
-    gsmCode = "N/A";
-    carrierName = "N/A";
+function getSimInfoOnError(error) {
+    gsmCode = "error";
+    carrierName = "error";
 }
 
 function getGSMCode() {

@@ -1,35 +1,19 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "id": "cordova-plugin-dialogs.notification",
-        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
-        "pluginId": "cordova-plugin-dialogs",
-        "merges": [
-            "navigator.notification"
-        ]
-    },
-    {
-        "id": "cordova-plugin-dialogs.notification_android",
-        "file": "plugins/cordova-plugin-dialogs/www/android/notification.js",
-        "pluginId": "cordova-plugin-dialogs",
-        "merges": [
-            "navigator.notification"
-        ]
-    },
-    {
-        "id": "cordova-plugin-globalization.GlobalizationError",
-        "file": "plugins/cordova-plugin-globalization/www/GlobalizationError.js",
-        "pluginId": "cordova-plugin-globalization",
+        "id": "cordova-plugin-battery-status.battery",
+        "file": "plugins/cordova-plugin-battery-status/www/battery.js",
+        "pluginId": "cordova-plugin-battery-status",
         "clobbers": [
-            "window.GlobalizationError"
+            "navigator.battery"
         ]
     },
     {
-        "id": "cordova-plugin-globalization.globalization",
-        "file": "plugins/cordova-plugin-globalization/www/globalization.js",
-        "pluginId": "cordova-plugin-globalization",
+        "id": "cordova-plugin-device.device",
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "pluginId": "cordova-plugin-device",
         "clobbers": [
-            "navigator.globalization"
+            "device"
         ]
     },
     {
@@ -57,68 +41,19 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-device.device",
-        "file": "plugins/cordova-plugin-device/www/device.js",
-        "pluginId": "cordova-plugin-device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
-        "id": "cordova-plugin-battery-status.battery",
-        "file": "plugins/cordova-plugin-battery-status/www/battery.js",
-        "pluginId": "cordova-plugin-battery-status",
-        "clobbers": [
-            "navigator.battery"
-        ]
-    },
-    {
-        "id": "cordova-plugin-sim.Sim",
-        "file": "plugins/cordova-plugin-sim/www/sim.js",
-        "pluginId": "cordova-plugin-sim",
+        "id": "cordova-plugin-dialogs.notification",
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "pluginId": "cordova-plugin-dialogs",
         "merges": [
-            "window.plugins.sim"
+            "navigator.notification"
         ]
     },
     {
-        "id": "cordova-plugin-sim.SimAndroid",
-        "file": "plugins/cordova-plugin-sim/www/android/sim.js",
-        "pluginId": "cordova-plugin-sim",
+        "id": "cordova-plugin-dialogs.notification_android",
+        "file": "plugins/cordova-plugin-dialogs/www/android/notification.js",
+        "pluginId": "cordova-plugin-dialogs",
         "merges": [
-            "window.plugins.sim"
-        ]
-    },
-    {
-        "id": "cordova-plugin-network-information.network",
-        "file": "plugins/cordova-plugin-network-information/www/network.js",
-        "pluginId": "cordova-plugin-network-information",
-        "clobbers": [
-            "navigator.connection",
-            "navigator.network.connection"
-        ]
-    },
-    {
-        "id": "cordova-plugin-network-information.Connection",
-        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
-        "pluginId": "cordova-plugin-network-information",
-        "clobbers": [
-            "Connection"
-        ]
-    },
-    {
-        "id": "cordova-plugin-splashscreen.SplashScreen",
-        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-        "pluginId": "cordova-plugin-splashscreen",
-        "clobbers": [
-            "navigator.splashscreen"
-        ]
-    },
-    {
-        "id": "cordova-plugin-sqlite-2.sqlitePlugin",
-        "file": "plugins/cordova-plugin-sqlite-2/dist/sqlite-plugin.js",
-        "pluginId": "cordova-plugin-sqlite-2",
-        "clobbers": [
-            "sqlitePlugin"
+            "navigator.notification"
         ]
     },
     {
@@ -304,11 +239,68 @@ module.exports = [
         "runs": true
     },
     {
-        "id": "org.apache.cordova.signal-strength.signal-strength",
-        "file": "plugins/org.apache.cordova.signal-strength/www/signal-strength.js",
-        "pluginId": "org.apache.cordova.signal-strength",
+        "id": "cordova-plugin-globalization.GlobalizationError",
+        "file": "plugins/cordova-plugin-globalization/www/GlobalizationError.js",
+        "pluginId": "cordova-plugin-globalization",
         "clobbers": [
-            "signal-strength"
+            "window.GlobalizationError"
+        ]
+    },
+    {
+        "id": "cordova-plugin-globalization.globalization",
+        "file": "plugins/cordova-plugin-globalization/www/globalization.js",
+        "pluginId": "cordova-plugin-globalization",
+        "clobbers": [
+            "navigator.globalization"
+        ]
+    },
+    {
+        "id": "cordova-plugin-network-information.network",
+        "file": "plugins/cordova-plugin-network-information/www/network.js",
+        "pluginId": "cordova-plugin-network-information",
+        "clobbers": [
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "id": "cordova-plugin-network-information.Connection",
+        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+        "pluginId": "cordova-plugin-network-information",
+        "clobbers": [
+            "Connection"
+        ]
+    },
+    {
+        "id": "cordova-plugin-sim.Sim",
+        "file": "plugins/cordova-plugin-sim/www/sim.js",
+        "pluginId": "cordova-plugin-sim",
+        "merges": [
+            "window.plugins.sim"
+        ]
+    },
+    {
+        "id": "cordova-plugin-sim.SimAndroid",
+        "file": "plugins/cordova-plugin-sim/www/android/sim.js",
+        "pluginId": "cordova-plugin-sim",
+        "merges": [
+            "window.plugins.sim"
+        ]
+    },
+    {
+        "id": "cordova-plugin-splashscreen.SplashScreen",
+        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "pluginId": "cordova-plugin-splashscreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
+    },
+    {
+        "id": "cordova-plugin-sqlite-2.sqlitePlugin",
+        "file": "plugins/cordova-plugin-sqlite-2/dist/sqlite-plugin.js",
+        "pluginId": "cordova-plugin-sqlite-2",
+        "clobbers": [
+            "sqlitePlugin"
         ]
     },
     {
@@ -323,25 +315,21 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-dialogs": "1.3.1-dev",
-    "cordova-plugin-globalization": "1.0.5-dev",
-    "cordova-plugin-device-orientation": "1.0.5-dev",
-    "cordova-plugin-device": "1.1.4-dev",
     "cordova-plugin-battery-status": "1.2.1-dev",
-    "cordova-plugin-sim": "1.3.0",
-    "cordova-plugin-network-information": "1.3.1-dev",
-    "cordova-plugin-splashscreen": "4.0.1-dev",
-    "cordova-plugin-console": "1.0.5-dev",
-    "cordova-plugin-sqlite-2": "1.0.4",
-    "cordova-plugin-email-composer": "0.8.3",
     "cordova-plugin-compat": "1.0.0",
+    "cordova-plugin-console": "1.0.5-dev",
+    "cordova-plugin-device": "1.1.4-dev",
+    "cordova-plugin-device-orientation": "1.0.5-dev",
+    "cordova-plugin-dialogs": "1.3.1-dev",
+    "cordova-plugin-email-composer": "0.8.3",
     "cordova-plugin-file": "4.3.1-dev",
-<<<<<<< HEAD
-=======
+    "cordova-plugin-globalization": "1.0.5-dev",
+    "cordova-plugin-network-information": "1.3.1-dev",
+    "cordova-plugin-sim": "1.3.0",
+    "cordova-plugin-splashscreen": "4.0.1-dev",
     "cordova-plugin-sqlite-2": "1.0.4",
->>>>>>> Comment stacktrace alert and cleaning some stuff
-    "org.apache.cordova.signal-strength": "1.0.0",
-    "cordova-plugin-whitelist": "1.3.0"
+    "cordova-plugin-whitelist": "1.3.0",
+    "org.apache.cordova.signal-strength": "1.0.0"
 };
 // BOTTOM OF METADATA
 });
