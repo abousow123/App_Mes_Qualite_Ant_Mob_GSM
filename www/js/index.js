@@ -117,7 +117,13 @@ function btnAnnulerCollecteAction() {
 function btnExporterCollecteAction() {
 //    alert('clicked');
     var curentdateTime = getDate();
-    doInsertOnDB(curentdateTime, -83, 96, 1, curentdateTime + '-83961');
+    var signalDbm = getSignalDbm();
+    var batterieLevel = getBatterieLevel();
+    var batterieEnChargeInt = isBatteriePluggedInteger();
+    var hashkey = "" + curentdateTime + signalDbm + batterieLevel + batterieEnChargeInt;
+
+    doInsertOnDB(curentdateTime, signalDbm, batterieLevel, batterieEnChargeInt, hashkey);
+
     getData(createCSVAndSendByMail);
 }
 

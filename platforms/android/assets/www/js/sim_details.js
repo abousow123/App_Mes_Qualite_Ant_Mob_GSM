@@ -14,7 +14,7 @@ var gsmCode = "N/A";
 var carrierName = "N/A";
 
 function getSimInfoOnSucces(result) {
-    console.log(result);
+    console.log('This is the result: ' + result);
     gsmCode = result.mnc;
     carrierName = result.carrierName;
 }
