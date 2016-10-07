@@ -16,22 +16,23 @@
 
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function () {
         this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
+    bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
 
+    onDeviceReady: function () {
+//        alert('index on device ready');
         btncollecterDonnees.addEventListener("click", btncollecterDonneesAction);
         btnArreterReprendre.addEventListener("click", btnArreterReprendreAction);
         btnAnnulerCollecte.addEventListener("click", btnAnnulerCollecteAction);
@@ -62,6 +63,7 @@ var btnAnnulerCollecte = document.getElementById("btnAnnulerCollecte");
 var btnExporterCollecte = document.getElementById("btnExpCollecte");
 var labelSignalBatterieStatus = document.getElementById("idSignalText");
 
+var cercleIndicator = document.getElementById("cercleIndicor");
 
 /********** Variables non view (juste pour garder des valeurs) *************/
 var status = 'off';
@@ -83,7 +85,7 @@ function displayDeviceAndSimInfo() {
 }
 
 function btncollecterDonneesAction() {
-    $.mobile.changePage("#idMonitoringPage", { transition: "slide" });
+    $.mobile.changePage("#idMonitoringPage", {transition: "slide"});
 }
 
 function btnArreterReprendreAction() {
@@ -111,6 +113,9 @@ function btnAnnulerCollecteAction() {
 }
 
 function btnExporterCollecteAction() {
+//    alert('clicked');
+    var curentdateTime = getDate();
+    doInsertOnDB(curentdateTime, -83, 96, 1, curentdateTime + '-83961');
     getData(createCSVAndSendByMail);
 }
 
@@ -128,9 +133,9 @@ function printSignalAndBatterie() {
     else
         isPlugged = 'non';
     labelSignalBatterieStatus.innerHTML = 'signal en dBm: ' + getSignalDbm() + '<br>' +
-        ' batterie: ' + getBatterieLevel() + '%<br>' +
-        ' branchée: ' + isPlugged + '<br>' +
-        ' date: ' + getDate();
+            ' batterie: ' + getBatterieLevel() + '%<br>' +
+            ' branchée: ' + isPlugged + '<br>' +
+            ' date: ' + getDate();
 
 }
 //Stop l'affichage du niveau du signal et de l'état de la batterie

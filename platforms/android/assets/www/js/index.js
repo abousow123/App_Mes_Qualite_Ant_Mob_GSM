@@ -30,8 +30,13 @@ var app = {
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
+<<<<<<< HEAD
     onDeviceReady: function() {
 
+=======
+    onDeviceReady: function () {
+//        alert('index on device ready');
+>>>>>>> Comment stacktrace alert and cleaning some stuff
         btncollecterDonnees.addEventListener("click", btncollecterDonneesAction);
         btnArreterReprendre.addEventListener("click", btnArreterReprendreAction);
         btnAnnulerCollecte.addEventListener("click", btnAnnulerCollecteAction);
@@ -62,6 +67,7 @@ var btnAnnulerCollecte = document.getElementById("btnAnnulerCollecte");
 var btnExporterCollecte = document.getElementById("btnExpCollecte");
 var labelSignalBatterieStatus = document.getElementById("idSignalText");
 
+var cercleIndicator = document.getElementById("cercleIndicor");
 
 /********** Variables non view (juste pour garder des valeurs) *************/
 var status = 'off';
@@ -111,6 +117,12 @@ function btnAnnulerCollecteAction() {
 }
 
 function btnExporterCollecteAction() {
+<<<<<<< HEAD
+=======
+//    alert('clicked');
+    var curentdateTime = getDate();
+    doInsertOnDB(curentdateTime, -83, 96, 1, curentdateTime + '-83961');
+>>>>>>> Comment stacktrace alert and cleaning some stuff
     getData(createCSVAndSendByMail);
 }
 

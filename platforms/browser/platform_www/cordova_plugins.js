@@ -492,6 +492,14 @@ module.exports = [
         "clobbers": [
             "signal-strength"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.signal-strength/www/signal-strength.js",
+        "id": "org.apache.cordova.signal-strength.signal-strength",
+        "pluginId": "org.apache.cordova.signal-strength",
+        "clobbers": [
+            "signal-strength"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -515,6 +523,11 @@ module.exports.metadata =
     "de.appplant.cordova.plugin.email-composer": "0.8.2",
     "org.apache.cordova.signal-strength": "1.0.0",
     "cordova-plugin-email-composer": "0.8.3",
+<<<<<<< HEAD
+=======
+    "cordova-plugin-sqlite-2": "1.0.4",
+    "org.apache.cordova.signal-strength": "1.0.0",
+>>>>>>> Comment stacktrace alert and cleaning some stuff
     "cordova-plugin-whitelist": "1.3.0"
 }
 // BOTTOM OF METADATA

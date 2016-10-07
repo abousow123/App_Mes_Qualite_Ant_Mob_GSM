@@ -1,17 +1,21 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 var db = null;
 var data = null;
+
 document.addEventListener('deviceready', function () {
-    db = window.sqlitePlugin.openDatabase({name: 'signal.db'});
+//    alert('database on device ready');
+    db = window.sqlitePlugin.openDatabase({name: 'signal.db', location: 'default'});
     db.transaction(populateDB, function (tx, error) {
         alert(error.message);
     });
 }, false);
+
 function populateDB(tx) {
+//    alert('OnPopulateDB');
     var query = 'CREATE TABLE IF NOT EXISTS call_data' +
             ' (' +
             'horodatage VARCHAR(50) PRIMARY KEY,' +
@@ -30,6 +34,7 @@ function erreur(error) {
 
 //it's for inserting data
 function doInsertOnDB(horodatage, niveau_signal, niveau_batterie, branchee, hashkey) {
+//    alert('on_doInsertOnDB');
     db.transaction(function (tx) {
         var query = 'INSERT INTO call_data(horodatage,niveau_signal,niveau_batterie,branchee,hashkey) VALUES(?,?,?,?,?);';
         tx.executeSql(query, ['"' + horodatage + '"', niveau_signal, niveau_batterie, branchee, '"' + hashkey + '"'], erreur);
@@ -47,6 +52,7 @@ function doDeleteAll() {
 }
 
 function readAll() {
+//    alert('on readAll');
     var myresult = [];
     var myObject = function (horodatage, niveau_signal, niveau_batterie, branchee, hashkey) {
         this.horodatage = horodatage;
@@ -58,8 +64,12 @@ function readAll() {
     var len = null;
     //permise me to exploit asynchronous transfer mode
     var def = $.Deferred();
-
+//    if (db == null)
+//        alert('db == null');
+//    else
+//        alert('db not null');
     db.transaction(function (tx) {
+//        alert('on readAll/db.transaction');
         tx.executeSql('SELECT horodatage,niveau_signal,niveau_batterie,branchee,hashkey FROM call_data', [], function (tx, result) {
             len = result.rows.length;
             if (len > 0)
@@ -73,13 +83,13 @@ function readAll() {
                             result.rows.item(i).branchee,
                             result.rows.item(i).hashkey
                             ));
-
                 }
 
                 def.resolve(myresult);
             }
         }, erreur);
     });
+//    alert('finished - readAll / db.transaction');
     return def.promise();
 }
 //just for test anonymous function in getData()
@@ -93,6 +103,7 @@ function test(t) {
 //you could use it like: (in a loop)
 //myresult[i].horodatage or myresult[i].branchee etc...
 function getData(anonymousfunction) {
+//    alert('on getData');
     readAll().done(function (myresult) {
         anonymousfunction(myresult);
     });

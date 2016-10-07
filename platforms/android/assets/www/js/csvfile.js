@@ -20,20 +20,28 @@ var txtToWrite = ""; //String que sera ecrit dans le fichier CSV
  */
 
 function createCSVAndSendByMail(data) {
+<<<<<<< HEAD
+=======
+//    alert('on createCSVAndSendByMail');
+>>>>>>> Comment stacktrace alert and cleaning some stuff
     formatToCSVString(data);
     createCSVFile();
 }
 
 
 function createCSVFile() {
+<<<<<<< HEAD
 
+=======
+//    alert('on createCSVFile');
+>>>>>>> Comment stacktrace alert and cleaning some stuff
     window.requestFileSystem(window.PERSISTENT, 5 * 1024 * 102, onSuccessLoadFs, onErrorLoadFs);
 
 }
 
 
 function onSuccessLoadFs(fs) {
-    alert('file system open: ' + fs.name);
+//    alert('file system open: ' + fs.name);
     window.resolveLocalFileSystemURL(cordova.file.externalCacheDirectory, function (entry) {
         createFile(entry, "test.csv", false);
     });
@@ -56,8 +64,7 @@ function writeFile(fileEntry, dataObj) {
 
         fileWriter.onwriteend = function () {
             alert("Successful file write...");
-            readFile(fileEntry);
-            createFileSuccess = true;
+//            readFile(fileEntry);
             sendMail(fileEntry.toURL());
         };
 
@@ -99,8 +106,12 @@ function readFile(fileEntry) {
  * @returns {Nothing}
  */
 function formatToCSVString(data) {
+<<<<<<< HEAD
     var curentdateTime = getDate();
     doInsertOnDB(curentdateTime, -83, 96, 1, curentdateTime + '-83961');
+=======
+//    alert('on formatToCSVString');
+>>>>>>> Comment stacktrace alert and cleaning some stuff
     txtToWrite = "Horodatage,Niveau du Signal(en Db),Niveau de Batterie(Décibel),En charge,Hashkey\n";
     for (var i = 0; i < data.length; i++) {
         var enCharge = null;
