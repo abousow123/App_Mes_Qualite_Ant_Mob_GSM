@@ -13,11 +13,17 @@
 }
 
 #btnCollecterDonnees span span {
-    height: 100px !important;  
+    height: 100px !important;
     line-height: 70px;
 }
 /*this place used graphic for battry status and signal this width and height*/
 #graphics{
     width: 100%;
     height: 60%;
+}
+#cercleIndicor{
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
 }

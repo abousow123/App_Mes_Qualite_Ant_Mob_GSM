@@ -22,10 +22,10 @@ function traceCourbe(tabBattry, tabSignal) {
             },
             series: [{
                     name: 'niveau signal',
-                    data: tabBattry
+                    data: tabSignal
                 }, {
                     name: 'niveau battrie',
-                    data: tabSignal
+                    data: tabBattry
                 }]
         });
     });

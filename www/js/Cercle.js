@@ -2,12 +2,13 @@
  pie chart with the pourcentage in the middle
  */
 function makeCircle(percentValue) {
-   // $('#circle').progressCircle();
+    (function ($) {
+        $('#cercleIndicor').progressCircle({
+            nPercent: percentValue,
+            showPercentText: true,
+            thickness: 3,
+            circleSize: 100
+        });
+    })(jQuery);
 
-    $('#circle').progressCircle({
-        nPercent: percentValue,
-        showPercentText: true,
-        thickness: 100,
-        circleSize: 3
-    });
 }
