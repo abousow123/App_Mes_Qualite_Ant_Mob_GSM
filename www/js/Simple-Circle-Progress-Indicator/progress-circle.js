@@ -72,19 +72,19 @@
                 'border-width': border,
                 'width': offset,
                 'height': offset
-            })
+            });
             progCirc.find('.after').css({
                 'top': border,
                 'left': border,
                 'width': offset,
                 'height': offset
-            })
+            });
         }
 
         function resetCircle() {
             circleSlice.show();
             circleSpan.text('');
-            circleSlice.removeClass('clipauto')
+            circleSlice.removeClass('clipauto');
             transformCircle(20, circleDiv);
             transformCircle(20, circleFill);
             return this;

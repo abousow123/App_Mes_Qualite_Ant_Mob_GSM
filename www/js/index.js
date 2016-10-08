@@ -186,7 +186,7 @@ function getValuesForCharts() {
 }
 // this print circle chart for data frequences used
 function PeriodicMakeCircle() {
-    processForCircle = setInterval(makeCircle((getSignalDbm() + 110) * (100 / 110)), 50000);
+    processForCircle = setInterval(makeCircle((getSignalDbm() + 110) * (100 / 110)), 5000);
 }
 
 function stopCircle() {
