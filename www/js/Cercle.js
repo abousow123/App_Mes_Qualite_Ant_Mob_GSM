@@ -73,7 +73,7 @@ function makeCircle() {
                                 '<span style="font-size:12px;color:silver">Dbm</span></div>'
                     },
                     tooltip: {
-                        valueSuffix: ' Dbm'
+                        valueSuffix: ' %'
                     }
                 }]
         }));
@@ -82,7 +82,7 @@ function makeCircle() {
                 point;
         if (chart) {
             point = chart.series[0].points[0];
-            point.update(Math.round((getSignalDbm() * (-1)) * (100 / 110)));
+            point.update(Math.round((getSignalDbm() + 110) * (100 / 110)));
         }
     });
 }
