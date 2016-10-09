@@ -44,7 +44,7 @@ var app = {
             //make courbe just where device is ready
             getValuesForCharts();
             // after that make a periodical call of  tracing charts functon on graphics.js
-            retraceCourbe();
+            makeCircle();
         }, 100);
     }
 };
@@ -74,7 +74,7 @@ var cercleIndicator = document.getElementById("cercleIndicor");
 var status = 'off';
 var processWritting = null;
 var processForCourbe = null;
-var processForCircle = null;
+var processCircle = null;
 //pour garder les donnees dans des array pour signal et le battry
 var tabBattry = [];
 var tabSignal = [];
@@ -101,11 +101,9 @@ function btnArreterReprendreAction() {
         labelSignalBatterieStatus.innerHTML = 'starting...';
         repeatPrintingSigAndBat();
         retraceCourbe();
-        PeriodicMakeCircle();
     } else {
         stopPrintingSignalAndBatterie();
         stopRetraceCourbe();
-        stopCircle();
         status = 'off';
         btnArreterReprendre.innerHTML = "Reprendre";
         labelSignalBatterieStatus.innerHTML = labelSignalBatterieStatus.innerHTML + '<br><br><hr><font color="Blue">' + 'pause</font><hr>';
@@ -115,7 +113,6 @@ function btnArreterReprendreAction() {
 function btnAnnulerCollecteAction() {
     stopPrintingSignalAndBatterie();
     stopRetraceCourbe();
-    stopCircle();
     status = 'off';
     btnArreterReprendre.innerHTML = "Commencer";
     labelSignalBatterieStatus.innerHTML = '';
@@ -184,11 +181,12 @@ function getValuesForCharts() {
     tabSignal.push(getSignalDbm());
     traceCourbe(tabBattry, tabSignal);
 }
-// this print circle chart for data frequences used
-function PeriodicMakeCircle() {
-    processForCircle = setInterval(makeCircle((getSignalDbm() + 110) * (100 / 110)), 5000);
+function repeatCircle() {
+    // processCircle = setInterval
 }
+function callCircle() {
 
+}
 function stopCircle() {
-    clearInterval(processForCircle);
+    clearInterval(processCircle);
 }
