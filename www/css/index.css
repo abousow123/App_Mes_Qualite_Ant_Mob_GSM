@@ -28,6 +28,8 @@ this div element help to make easelly style on the cercleIndicators*/
     height:  15% !important;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }
 /*the cerccleindicator element for displaying the chart circle on the view
 elements*/

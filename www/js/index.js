@@ -179,8 +179,12 @@ function getValuesForCharts() {
 }
 //this function gonna call every 5s the printer circle function on cercle.js
 function repeatCircle() {
+    //show the element view and call the printer cercle function
+    $('#cercleIndicor').show();
     processCircle = setInterval(makeCircle(), 5000);
 }
 function stopCircle() {
+    //clear interval set and hide the element view
     clearInterval(processCircle);
+    $('#cercleIndicor').hide();
 }
