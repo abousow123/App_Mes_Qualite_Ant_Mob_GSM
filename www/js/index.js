@@ -41,6 +41,9 @@ var app = {
         setTimeout(function () {
             //@pape :ajout
             displayDeviceAndSimInfo();
+            //call once for printing the view of graphics
+            // call take the values and make the graphics
+            getValuesForCharts();
             //make courbe just where device is ready
             retraceCourbe();
 
