@@ -76,26 +76,13 @@ function makeCircle() {
                         valueSuffix: ' Dbm'
                     }
                 }]
-
         }));
-        // Bring life to the dials
-        setTimeout(function () {
-            // Speed
-            var chart = $('#cercleIndicor').highcharts(),
-                    point;
-//                    newVal,
-//                    inc;
-
-            if (chart) {
-                point = chart.series[0].points[0];
-//                inc = Math.round((getSignalDbm() + 100) * (100 / 110));
-//                newVal = point.y + inc;
-//
-//                if (newVal < 0 || newVal > 100) {
-//                    newVal = point.y - inc;
-//                }
-                point.update(Math.round((getSignalDbm() + 100) * (100 / 110)));
-            }
-        }, 5000);
+        // Speed
+        var chart = $('#cercleIndicor').highcharts(),
+                point;
+        if (chart) {
+            point = chart.series[0].points[0];
+            point.update(Math.round((getSignalDbm() * (-1)) * (100 / 110)));
+        }
     });
 }

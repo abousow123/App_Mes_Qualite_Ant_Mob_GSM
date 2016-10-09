@@ -41,7 +41,9 @@ var app = {
         setTimeout(function () {
             //@pape :ajout
             displayDeviceAndSimInfo();
-            retraceCourbe();
+            //make courbe just where device is ready
+            getValuesForCharts();
+
         }, 100);
     }
 };
@@ -65,12 +67,11 @@ var btnAnnulerCollecte = document.getElementById("btnAnnulerCollecte");
 var btnExporterCollecte = document.getElementById("btnExpCollecte");
 var labelSignalBatterieStatus = document.getElementById("idSignalText");
 
-var cercleIndicator = document.getElementById("cercleIndicor");
-
 /********** Variables non view (juste pour garder des valeurs) *************/
 var status = 'off';
 var processWritting = null;
 var processForCourbe = null;
+var processCircle = null;
 //pour garder les donnees dans des array pour signal et le battry
 var tabBattry = [];
 var tabSignal = [];
@@ -96,10 +97,12 @@ function btnArreterReprendreAction() {
         btnArreterReprendre.innerHTML = "Arrêter";
         labelSignalBatterieStatus.innerHTML = 'starting...';
         repeatPrintingSigAndBat();
-        retraceCourbe();
+//        retraceCourbe();
+        repeatCircle();
     } else {
         stopPrintingSignalAndBatterie();
-        stopRetraceCourbe();
+//        stopRetraceCourbe();
+        stopCircle();
         status = 'off';
         btnArreterReprendre.innerHTML = "Reprendre";
         labelSignalBatterieStatus.innerHTML = labelSignalBatterieStatus.innerHTML + '<br><br><hr><font color="Blue">' + 'pause</font><hr>';
@@ -108,7 +111,8 @@ function btnArreterReprendreAction() {
 
 function btnAnnulerCollecteAction() {
     stopPrintingSignalAndBatterie();
-    stopRetraceCourbe();
+//    stopRetraceCourbe();
+    stopCircle();
     status = 'off';
     btnArreterReprendre.innerHTML = "Commencer";
     labelSignalBatterieStatus.innerHTML = '';
@@ -117,7 +121,11 @@ function btnAnnulerCollecteAction() {
 function btnExporterCollecteAction() {
 //    alert('clicked');
     var curentdateTime = getDate();
-    doInsertOnDB(curentdateTime, -83, 96, 1, curentdateTime + '-83961');
+    var signalDbm = getSignalDbm();
+    var batterieLevel = getBatterieLevel();
+    var batterieEnChargeInt = isBatteriePluggedInteger();
+    var hashkey = "" + curentdateTime + signalDbm + batterieLevel + batterieEnChargeInt;
+    doInsertOnDB(curentdateTime, signalDbm, batterieLevel, batterieEnChargeInt, hashkey);
     getData(createCSVAndSendByMail);
 }
 
@@ -170,4 +178,10 @@ function getValuesForCharts() {
     // 0dms ----> 100% good it's mean the signal is perfect
     tabSignal.push(getSignalDbm());
     traceCourbe(tabBattry, tabSignal);
+}
+function repeatCircle() {
+    processCircle = setInterval(makeCircle(), 5000);
+}
+function stopCircle() {
+    clearInterval(processCircle);
 }

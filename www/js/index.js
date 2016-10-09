@@ -43,8 +43,7 @@ var app = {
             displayDeviceAndSimInfo();
             //make courbe just where device is ready
             getValuesForCharts();
-            // after that make a periodical call of  tracing charts functon on graphics.js
-            makeCircle();
+
         }, 100);
     }
 };
@@ -67,8 +66,6 @@ var btnArreterReprendre = document.getElementById("btnStartPauseCollecte");
 var btnAnnulerCollecte = document.getElementById("btnAnnulerCollecte");
 var btnExporterCollecte = document.getElementById("btnExpCollecte");
 var labelSignalBatterieStatus = document.getElementById("idSignalText");
-
-var cercleIndicator = document.getElementById("cercleIndicor");
 
 /********** Variables non view (juste pour garder des valeurs) *************/
 var status = 'off';
@@ -100,10 +97,12 @@ function btnArreterReprendreAction() {
         btnArreterReprendre.innerHTML = "Arrêter";
         labelSignalBatterieStatus.innerHTML = 'starting...';
         repeatPrintingSigAndBat();
-        retraceCourbe();
+//        retraceCourbe();
+        repeatCircle();
     } else {
         stopPrintingSignalAndBatterie();
-        stopRetraceCourbe();
+//        stopRetraceCourbe();
+        stopCircle();
         status = 'off';
         btnArreterReprendre.innerHTML = "Reprendre";
         labelSignalBatterieStatus.innerHTML = labelSignalBatterieStatus.innerHTML + '<br><br><hr><font color="Blue">' + 'pause</font><hr>';
@@ -112,7 +111,8 @@ function btnArreterReprendreAction() {
 
 function btnAnnulerCollecteAction() {
     stopPrintingSignalAndBatterie();
-    stopRetraceCourbe();
+//    stopRetraceCourbe();
+    stopCircle();
     status = 'off';
     btnArreterReprendre.innerHTML = "Commencer";
     labelSignalBatterieStatus.innerHTML = '';
@@ -125,9 +125,7 @@ function btnExporterCollecteAction() {
     var batterieLevel = getBatterieLevel();
     var batterieEnChargeInt = isBatteriePluggedInteger();
     var hashkey = "" + curentdateTime + signalDbm + batterieLevel + batterieEnChargeInt;
-
     doInsertOnDB(curentdateTime, signalDbm, batterieLevel, batterieEnChargeInt, hashkey);
-
     getData(createCSVAndSendByMail);
 }
 
@@ -182,10 +180,7 @@ function getValuesForCharts() {
     traceCourbe(tabBattry, tabSignal);
 }
 function repeatCircle() {
-    // processCircle = setInterval
-}
-function callCircle() {
-
+    processCircle = setInterval(makeCircle(), 5000);
 }
 function stopCircle() {
     clearInterval(processCircle);

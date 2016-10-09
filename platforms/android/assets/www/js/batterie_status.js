@@ -1,4 +1,4 @@
-/* 
+/*
  * Propose les services pour :
  * récuper le niveau de batterie en pourcentage (0-100) --> getBatterieLevel()
  * récuper l'état de la batterie (en charge (true) ou non (false)) --> isisBatteriePlugged()
@@ -23,4 +23,10 @@ function getBatterieLevel() {
 
 function isBatteriePlugged() {
     return batterieStatus.isPlugged;
+}
+
+function isBatteriePluggedInteger() {
+    if (isBatteriePlugged())
+        return 1;
+    return 0;
 }
