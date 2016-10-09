@@ -42,7 +42,7 @@ var app = {
             //@pape :ajout
             displayDeviceAndSimInfo();
             //make courbe just where device is ready
-            getValuesForCharts();
+            retraceCourbe();
 
         }, 100);
     }
@@ -97,11 +97,9 @@ function btnArreterReprendreAction() {
         btnArreterReprendre.innerHTML = "Arrêter";
         labelSignalBatterieStatus.innerHTML = 'starting...';
         repeatPrintingSigAndBat();
-//        retraceCourbe();
         repeatCircle();
     } else {
         stopPrintingSignalAndBatterie();
-//        stopRetraceCourbe();
         stopCircle();
         status = 'off';
         btnArreterReprendre.innerHTML = "Reprendre";
@@ -111,7 +109,6 @@ function btnArreterReprendreAction() {
 
 function btnAnnulerCollecteAction() {
     stopPrintingSignalAndBatterie();
-//    stopRetraceCourbe();
     stopCircle();
     status = 'off';
     btnArreterReprendre.innerHTML = "Commencer";
