@@ -109,6 +109,7 @@ function btnArreterReprendreAction() {
 
 function btnAnnulerCollecteAction() {
     stopPrintingSignalAndBatterie();
+    //stop the caller function of printing circle
     stopCircle();
     status = 'off';
     btnArreterReprendre.innerHTML = "Commencer";
@@ -172,10 +173,11 @@ function stopRetraceCourbe() {
 function getValuesForCharts() {
     // add the battry level value
     tabBattry.push(getBatterieLevel());
-    // 0dms ----> 100% good it's mean the signal is perfect
+    // -118dms ----> -48 good it's mean the signal is perfect
     tabSignal.push(getSignalDbm());
     traceCourbe(tabBattry, tabSignal);
 }
+//this function gonna call every 5s the printer circle function on cercle.js
 function repeatCircle() {
     processCircle = setInterval(makeCircle(), 5000);
 }
