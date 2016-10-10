@@ -105,24 +105,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-email-composer": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/katzer/cordova-plugin-email-composer.git",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "org.apache.cordova.signal-strength": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/petervojtek/cordova-plugin-signal-strength.git",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "org.apache.cordova.signal-strength": {
         "source": {
             "type": "git",
@@ -136,6 +118,16 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "de.appplant.cordova.plugin.email-composer": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/katzer/cordova-plugin-email-composer.git",
+            "subdir": ".",
+            "ref": "0.8.2"
         },
         "is_top_level": true,
         "variables": {}

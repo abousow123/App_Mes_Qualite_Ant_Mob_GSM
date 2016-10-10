@@ -57,15 +57,6 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-email-composer.EmailComposer",
-        "file": "plugins/cordova-plugin-email-composer/www/email_composer.js",
-        "pluginId": "cordova-plugin-email-composer",
-        "clobbers": [
-            "cordova.plugins.email",
-            "plugin.email"
-        ]
-    },
-    {
         "id": "cordova-plugin-file.DirectoryEntry",
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "pluginId": "cordova-plugin-file",
@@ -310,6 +301,15 @@ module.exports = [
         "clobbers": [
             "signal-strength"
         ]
+    },
+    {
+        "id": "de.appplant.cordova.plugin.email-composer.EmailComposer",
+        "file": "plugins/de.appplant.cordova.plugin.email-composer/www/email_composer.js",
+        "pluginId": "de.appplant.cordova.plugin.email-composer",
+        "clobbers": [
+            "cordova.plugins.email",
+            "plugin.email"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -321,7 +321,6 @@ module.exports.metadata =
     "cordova-plugin-device": "1.1.4-dev",
     "cordova-plugin-device-orientation": "1.0.5-dev",
     "cordova-plugin-dialogs": "1.3.1-dev",
-    "cordova-plugin-email-composer": "0.8.3",
     "cordova-plugin-file": "4.3.1-dev",
     "cordova-plugin-globalization": "1.0.5-dev",
     "cordova-plugin-network-information": "1.3.1-dev",
@@ -329,7 +328,8 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "4.0.1-dev",
     "cordova-plugin-sqlite-2": "1.0.4",
     "cordova-plugin-whitelist": "1.3.0",
-    "org.apache.cordova.signal-strength": "1.0.0"
+    "org.apache.cordova.signal-strength": "1.0.0",
+    "de.appplant.cordova.plugin.email-composer": "0.8.2"
 };
 // BOTTOM OF METADATA
 });
