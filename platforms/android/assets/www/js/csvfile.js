@@ -20,21 +20,21 @@ var txtToWrite = ""; //String que sera ecrit dans le fichier CSV
  */
 
 function createCSVAndSendByMail(data) {
-//    alert('on createCSVAndSendByMail');
+    alert('on createCSVAndSendByMail');
     formatToCSVString(data);
     createCSVFile();
 }
 
 
 function createCSVFile() {
-//    alert('on createCSVFile');
+    alert('on createCSVFile');
     window.requestFileSystem(window.PERSISTENT, 5 * 1024 * 102, onSuccessLoadFs, onErrorLoadFs);
 
 }
 
 
 function onSuccessLoadFs(fs) {
-//    alert('file system open: ' + fs.name);
+    alert('on onSuccessLoadFs \nfile system open: ' + fs.name);
     window.resolveLocalFileSystemURL(cordova.file.externalCacheDirectory, function (entry) {
         createFile(entry, "test.csv", false);
     });
@@ -43,6 +43,7 @@ function onSuccessLoadFs(fs) {
 
 function createFile(dirEntry, fileName, isAppend) {
     // Creates a new file or returns the file if it already exists.
+    alert('on createFile');
     dirEntry.getFile(fileName, {create: true, exclusive: false}, function (fileEntry) {
 
         writeFile(fileEntry, null, isAppend);
@@ -53,11 +54,12 @@ function createFile(dirEntry, fileName, isAppend) {
 
 function writeFile(fileEntry, dataObj) {
     // Create a FileWriter object for our FileEntry.
+    alert('on writeFile');
     fileEntry.createWriter(function (fileWriter) {
-
+        alert('on CreateWriter');
         fileWriter.onwriteend = function () {
             alert("Successful file write...");
-//            readFile(fileEntry);
+            readFile(fileEntry);
             sendMail(fileEntry.toURL());
         };
 
@@ -67,9 +69,12 @@ function writeFile(fileEntry, dataObj) {
 
         // create a new Blob
 
-        dataObj = new Blob(['' + txtToWrite], {type: 'text/plain'});
+//        dataObj = new Blob(['' + txtToWrite], {type: 'text/plain'});
+        var dataObj = newBlob(txtToWrite, 'text/plain');
 
+        alert('after creation new Blob');
         fileWriter.write(dataObj);
+        alert('after fileWriter.write');
     });
 }
 
@@ -99,7 +104,7 @@ function readFile(fileEntry) {
  * @returns {Nothing}
  */
 function formatToCSVString(data) {
-//    alert('on formatToCSVString');
+    alert('on formatToCSVString');
     txtToWrite = "Horodatage,Niveau du Signal(en Db),Niveau de Batterie(Décibel),En charge,Hashkey\n";
 
     for (var i = 0; i < data.length; i++) {
@@ -114,6 +119,41 @@ function formatToCSVString(data) {
                 + enCharge + ","
                 + data[i].hashkey + "\n";
     }
+}
+
+
+function newBlob(data, datatype) {
+    var out;
+
+    try {
+        out = new Blob([data], {type: datatype});
+        console.debug("Blob: case 1");
+        alert('Blob: case  1');
+    } catch (e) {
+        window.BlobBuilder = window.BlobBuilder ||
+                window.WebKitBlobBuilder ||
+                window.MozBlobBuilder ||
+                window.MSBlobBuilder;
+
+        if (e.name == 'TypeError' && window.BlobBuilder) {
+            var bb = new BlobBuilder();
+            bb.append(data);
+            out = bb.getBlob(datatype);
+            console.debug("Blob: case 2");
+            alert('Blob: case  2');
+        } else if (e.name == "InvalidStateError") {
+            // InvalidStateError (tested on FF13 WinXP)
+            out = new Blob([data], {type: datatype});
+            console.debug("Blob: case 3");
+            alert('Blob: case  3');
+        } else {
+            // We're screwed, blob constructor unsupported entirely
+            console.debug("Blob: Error");
+            alert('Blob: Error');
+        }
+    }
+    alert('about to return out');
+    return out;
 }
 
 /*

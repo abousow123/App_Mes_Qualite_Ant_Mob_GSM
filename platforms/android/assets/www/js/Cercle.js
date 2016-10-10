@@ -1,17 +1,18 @@
 /*
  pie chart with the pourcentage in the middle
+ the type is solidgauge it display a circle ,
  */
 function makeCircle() {
     $(function () {
 
         var gaugeOptions = {
             chart: {
-                type: 'solidgauge'
+                type: 'solidgauge' //the chart type
             },
             title: null,
             pane: {
-                center: ['50%', '85%'],
-                size: '140%',
+                center: ['50%', '65%'], // with and heigth of the container graphics and i'm make some change for the correction
+                size: '100%', // and this one too
                 startAngle: -90,
                 endAngle: 90,
                 background: {
@@ -22,14 +23,14 @@ function makeCircle() {
                 }
             },
             tooltip: {
-                enabled: false
+                enabled: true // for seeing toast info of the level
             },
             // the value axis
             yAxis: {
-                stops: [
-                    [0.1, '#DF5353'], // red
-                    [0.5, '#DDDF0D'], // yellow
-                    [0.9, '#55BF3B'] // green
+                stops: [// diplay colors
+                    [0.1, 'red'],
+                    [0.5, 'yellow'],
+                    [0.9, 'green']
                 ],
                 lineWidth: 0,
                 minorTickInterval: null,
@@ -70,19 +71,21 @@ function makeCircle() {
                     dataLabels: {
                         format: '<div style="text-align:center"><span style="font-size:25px;color:' +
                                 ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
-                                '<span style="font-size:12px;color:silver">Dbm</span></div>'
+                                '<span style="font-size:12px;color:silver">Percent</span></div>'
                     },
                     tooltip: {
-                        valueSuffix: ' Dbm'
+                        valueSuffix: ' %'// percent personnalise of the Toast
                     }
                 }]
         }));
         // Speed
+
+        // instence of a new chart variable declared at the top
         var chart = $('#cercleIndicor').highcharts(),
                 point;
         if (chart) {
             point = chart.series[0].points[0];
-            point.update(Math.round((getSignalDbm() * (-1)) * (100 / 110)));
+            point.update(Math.round((getSignalDbm() + 118) * (100 / 118)));
         }
     });
 }

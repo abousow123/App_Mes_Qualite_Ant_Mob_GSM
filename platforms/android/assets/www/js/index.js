@@ -41,8 +41,14 @@ var app = {
         setTimeout(function () {
             //@pape :ajout
             displayDeviceAndSimInfo();
-            //make courbe just where device is ready
-            getValuesForCharts();
+
+            //Delete all data when starting
+            doDeleteAll();
+            //call once for printing the view of graphics
+            // call take the values and make the graphics
+            traceCourbe(tabBattry, tabSignal);
+//            make courbe just where device is ready
+//            retraceCourbe();
 
         }, 100);
     }
@@ -68,7 +74,7 @@ var btnExporterCollecte = document.getElementById("btnExpCollecte");
 var labelSignalBatterieStatus = document.getElementById("idSignalText");
 
 /********** Variables non view (juste pour garder des valeurs) *************/
-var status = 'off';
+var status = 'on';
 var processWritting = null;
 var processForCourbe = null;
 var processCircle = null;
@@ -89,6 +95,7 @@ function displayDeviceAndSimInfo() {
 
 function btncollecterDonneesAction() {
     $.mobile.changePage("#idMonitoringPage", {transition: "slide"});
+    retraceCourbe();
 }
 
 function btnArreterReprendreAction() {
@@ -97,11 +104,11 @@ function btnArreterReprendreAction() {
         btnArreterReprendre.innerHTML = "Arrêter";
         labelSignalBatterieStatus.innerHTML = 'starting...';
         repeatPrintingSigAndBat();
-//        retraceCourbe();
+        retraceCourbe();
         repeatCircle();
     } else {
         stopPrintingSignalAndBatterie();
-//        stopRetraceCourbe();
+        stopRetraceCourbe();
         stopCircle();
         status = 'off';
         btnArreterReprendre.innerHTML = "Reprendre";
@@ -111,7 +118,9 @@ function btnArreterReprendreAction() {
 
 function btnAnnulerCollecteAction() {
     stopPrintingSignalAndBatterie();
-//    stopRetraceCourbe();
+    //stop the caller function of printing circle
+    stopRetraceCourbe();
+    clearCourbes();
     stopCircle();
     status = 'off';
     btnArreterReprendre.innerHTML = "Commencer";
@@ -120,12 +129,6 @@ function btnAnnulerCollecteAction() {
 
 function btnExporterCollecteAction() {
 //    alert('clicked');
-    var curentdateTime = getDate();
-    var signalDbm = getSignalDbm();
-    var batterieLevel = getBatterieLevel();
-    var batterieEnChargeInt = isBatteriePluggedInteger();
-    var hashkey = "" + curentdateTime + signalDbm + batterieLevel + batterieEnChargeInt;
-    doInsertOnDB(curentdateTime, signalDbm, batterieLevel, batterieEnChargeInt, hashkey);
     getData(createCSVAndSendByMail);
 }
 
@@ -156,6 +159,7 @@ function stopPrintingSignalAndBatterie() {
 // this funcfunction  is for the periode call tratraceCourbe on graphics.js file
 // every 30 second;
 function retraceCourbe() {
+    getValuesForCharts();
     processForCourbe = setInterval(getValuesForCharts, 30000);
 }
 
@@ -173,15 +177,39 @@ function stopRetraceCourbe() {
 //}
 // to get the values for the arrays and call the fucntion traceCourbe()
 function getValuesForCharts() {
+    var curentdateTime = getDate();
+    var signalDbm = getSignalDbm();
+    var batterieLevel = getBatterieLevel();
+    var batterieEnChargeInt = isBatteriePluggedInteger();
+    var hashkey = "" + curentdateTime + signalDbm + batterieLevel + batterieEnChargeInt;
+
+
     // add the battry level value
-    tabBattry.push(getBatterieLevel());
-    // 0dms ----> 100% good it's mean the signal is perfect
-    tabSignal.push(getSignalDbm());
+    tabBattry.push(batterieLevel);
+    // -118 ----> -48 good it's mean the signal is perfect
+    // add the signaldB value
+    tabSignal.push(signalDbm);
+
+    //Draw chart
     traceCourbe(tabBattry, tabSignal);
+
+    //Update DB (insert value on DB)
+    doInsertOnDB(curentdateTime, signalDbm, batterieLevel, batterieEnChargeInt, hashkey);
 }
+//this function gonna call every 5s the printer circle function on cercle.js
 function repeatCircle() {
+    //show the element view and call the printer cercle function
+    $('#cercleIndicor').show();
     processCircle = setInterval(makeCircle(), 5000);
 }
 function stopCircle() {
+    //clear interval set and hide the element view
     clearInterval(processCircle);
+    $('#cercleIndicor').hide();
+}
+
+function clearCourbes() {
+    tabBattry = [];
+    tabSignal = [];
+    getValuesForCharts();
 }

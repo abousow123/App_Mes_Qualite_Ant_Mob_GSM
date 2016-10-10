@@ -21,9 +21,19 @@
     width: 100%;
     height: 60%;
 }
-#cercleIndicor{
-    width: 100%;
-    height: auto;
+/*it's the container of the cercleIndicator
+this div element help to make easelly style on the cercleIndicators*/
+#containerCercleIndicator{
+    width: 40% !important;
+    height:  15% !important;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+/*the cerccleindicator element for displaying the chart circle on the view
+elements*/
+#cercleIndicor{
+    width: auto;
+    height: auto;
 }

@@ -8,7 +8,7 @@ function traceCourbe(tabBattry, tabSignal) {
                 type: 'area'
             },
             title: {
-                text: 'Battrie & signal'
+                text: 'Batterie & signal'
             },
             xAxis: {
             },
@@ -21,10 +21,10 @@ function traceCourbe(tabBattry, tabSignal) {
                 }
             },
             series: [{
-                    name: 'niveau signal',
+                    name: 'Signal(dB)',
                     data: tabSignal
                 }, {
-                    name: 'niveau battrie',
+                    name: 'Batterie(%)',
                     data: tabBattry
                 }]
         });

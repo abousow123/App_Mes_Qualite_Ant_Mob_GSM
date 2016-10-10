@@ -29,7 +29,7 @@ function populateDB(tx) {
 
 
 function erreur(error) {
-    alert(" erreur: " + error.message);
+    console.log(" erreur: " + error.message);
 }
 
 //it's for inserting data
@@ -47,7 +47,7 @@ function doDeleteAll() {
     db.transaction(function (tx) {
         tx.executeSql("delete from call_data;");
     }, erreur, function () {
-        alert('data are deleted');
+        console.log('data are deleted');
     });
 }
 
@@ -91,10 +91,6 @@ function readAll() {
     });
 //    alert('finished - readAll / db.transaction');
     return def.promise();
-}
-//just for test anonymous function in getData()
-function test(t) {
-    alert("goog job:" + t[0].horodatage);
 }
 
 // use this function to do what you like with data
