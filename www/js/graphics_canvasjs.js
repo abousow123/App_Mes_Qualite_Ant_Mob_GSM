@@ -63,7 +63,7 @@ function startChart() {
     });
 
 
-    var updateInterval = 30000;
+    var updateInterval = 300;
 
     // initial value
     var yValue1 = getBatterieLevel();
@@ -84,7 +84,8 @@ function startChart() {
         for (var i = 0; i < count; i++) {
 
             // add interval duration to time
-            time.setTime(time.getTime() + updateInterval);
+//            time.setTime(time.getTime() + updateInterval);
+            time = new Date;
 
             // updating value yValue1 and yValue2.
             yValue1 = getBatterieLevel();

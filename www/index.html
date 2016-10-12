@@ -9,20 +9,6 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
-        <style>
-            /* For avoiding title truncation in wp8 */
-
-            .ui-header .ui-title {
-                overflow: visible !important;
-            }
-            /* For fixing the absolute position issue for the default cordova gen page*/
-
-            #cjp-accordion1 .app {
-                left: 5px !important;
-                margin: 5px !important;
-                position: relative !important;
-            }
-        </style>
         <title>Hello World</title>
     </head>
 
@@ -30,7 +16,7 @@
 
         <!--La page d'accueil (de chargemement des informations-->
         <div data-role="page" id="idHomePage">
-            <div data-role="header" data-position="fixed" id="idHomePageHeader" style="text-align: center">
+            <div data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
                 <h1>GSM Signal Monitoring</h1>
             </div>
             <div data-role="main" class="ui-content">
@@ -54,13 +40,13 @@
                 </ul>
             </div>
 
-            <div data-role="footer" data-position="fixed" style="text-align: center">
+            <div data-role="footer" data-position="fixed" style="text-align: end">
                 <button class="ui-btn-active" id="btnCollecterDonnees">Collecter<br>Données</button>
             </div>
         </div>
         <!--La page de monitoring ici (@laye and @badiane)-->
         <div data-role="page" id="idMonitoringPage">
-            <div data-role="header" data-position="fixed" id="idHomePageHeader">
+            <div data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
                 <a href="#" class="ui-btn ui-icon-back ui-btn-icon-notext" data-rel="back"></a>
                 <h1>GSM Signal Monitoring</h1>
             </div>
@@ -71,11 +57,13 @@
 
                 <p id="idSignalText"></p>
             </div>
-            <div data-role="footer" data-position="fixed" style="text-align: center">
-                <div data-role="controlgroup" data-type="horizontal">
-                    <button class="ui-btn-active" id="btnStartPauseCollecte">Arrêter</button>
-                    <button class="ui-btn-active" id="btnAnnulerCollecte">Annuler</button>
-                    <button class="ui-btn-active" id="btnExpCollecte">Exporter</button>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><button class="ui-btn-active" id="btnStartPauseCollecte">Arrêter</button></li>
+                        <li><button class="ui-btn-active" id="btnAnnulerCollecte">Annuler</button></li>
+                        <li><button class="ui-btn-active" id="btnExpCollecte">Exporter</button></li>
+                    </ul>
                 </div>
             </div>
             <div data-role="popup" id="popupBtnAnnuler">
