@@ -71,7 +71,6 @@ var btncollecterDonnees = document.getElementById("btnCollecterDonnees");
 var btnArreterReprendre = document.getElementById("btnStartPauseCollecte");
 var btnAnnulerCollecte = document.getElementById("btnAnnulerCollecte");
 var btnExporterCollecte = document.getElementById("btnExpCollecte");
-var labelSignalBatterieStatus = document.getElementById("idSignalText");
 
 /********** Variables non view (juste pour garder des valeurs) *************/
 var status = 'on';
@@ -103,12 +102,10 @@ function btnArreterReprendreAction() {
     if (status === 'off') {
         status = 'on';
         btnArreterReprendre.innerHTML = "Arrêter";
-        labelSignalBatterieStatus.innerHTML = 'starting...';
         repeatPrintingSigAndBat();
         retraceCourbe();
         repeatCircle();
     } else {
-        stopPrintingSignalAndBatterie();
         stopRetraceCourbe();
         stopCircle();
         status = 'off';
@@ -131,30 +128,6 @@ function btnAnnulerCollecteAction() {
 function btnExporterCollecteAction() {
 //    alert('clicked');
     getData(createCSVAndSendByMail);
-}
-
-//Répète l'affichage du niveau du signal et de l'état de la batterie toutes les 5000 millisecondes
-function repeatPrintingSigAndBat() {
-    processWritting = setInterval(printSignalAndBatterie, 5000);
-}
-//Affiche le niveau du signal et l'état de la batterie actuels
-function printSignalAndBatterie() {
-
-    var isPlugged = "N/A";
-
-    if (isBatteriePlugged())
-        isPlugged = 'oui';
-    else
-        isPlugged = 'non';
-    labelSignalBatterieStatus.innerHTML = 'signal en dBm: ' + getSignalDbm() + '<br>' +
-            ' batterie: ' + getBatterieLevel() + '%<br>' +
-            ' branchée: ' + isPlugged + '<br>' +
-            ' date: ' + getDate();
-
-}
-//Stop l'affichage du niveau du signal et de l'état de la batterie
-function stopPrintingSignalAndBatterie() {
-    clearInterval(processWritting);
 }
 
 // this funcfunction  is for the periode call tratraceCourbe on graphics.js file
