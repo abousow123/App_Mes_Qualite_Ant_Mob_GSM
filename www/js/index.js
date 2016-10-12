@@ -110,7 +110,6 @@ function btnArreterReprendreAction() {
         stopCircle();
         status = 'off';
         btnArreterReprendre.innerHTML = "Reprendre";
-        labelSignalBatterieStatus.innerHTML = labelSignalBatterieStatus.innerHTML + '<br><br><hr><font color="Blue">' + 'pause</font><hr>';
     }
 }
 
@@ -122,7 +121,6 @@ function btnAnnulerCollecteAction() {
     stopCircle();
     status = 'off';
     btnArreterReprendre.innerHTML = "Commencer";
-    labelSignalBatterieStatus.innerHTML = '';
 }
 
 function btnExporterCollecteAction() {
