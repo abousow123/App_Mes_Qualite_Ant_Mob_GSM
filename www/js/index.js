@@ -96,6 +96,7 @@ function displayDeviceAndSimInfo() {
 function btncollecterDonneesAction() {
     $.mobile.changePage("#idMonitoringPage", {transition: "slide"});
     retraceCourbe();
+    startChart();
 }
 
 function btnArreterReprendreAction() {
