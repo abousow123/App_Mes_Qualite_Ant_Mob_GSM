@@ -63,3 +63,9 @@ elements*/
     margin: 5px !important;
     position: relative !important;
 }
+
+
+#circle {
+    text-align: center !important;
+    margin: auto;
+}

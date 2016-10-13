@@ -42,6 +42,7 @@ var app = {
             //@pape :ajout
             displayDeviceAndSimInfo();
 
+//            drawCircle();
             //Delete all data when starting
             doDeleteAll();
             //call once for printing the view of graphics
@@ -71,6 +72,7 @@ var btncollecterDonnees = document.getElementById("btnCollecterDonnees");
 var btnArreterReprendre = document.getElementById("btnStartPauseCollecte");
 var btnAnnulerCollecte = document.getElementById("btnAnnulerCollecte");
 var btnExporterCollecte = document.getElementById("btnExpCollecte");
+var divCircle = document.getElementById("circle");
 
 /********** Variables non view (juste pour garder des valeurs) *************/
 var status = 'on';
@@ -96,18 +98,20 @@ function btncollecterDonneesAction() {
     $.mobile.changePage("#idMonitoringPage", {transition: "slide"});
     retraceCourbe();
     startChart();
+    startUpdatingCircle();
 }
 
 function btnArreterReprendreAction() {
     if (status === 'off') {
         status = 'on';
         btnArreterReprendre.innerHTML = "Arrêter";
-        repeatPrintingSigAndBat();
         retraceCourbe();
         repeatCircle();
+        startUpdatingCircle();
     } else {
         stopRetraceCourbe();
         stopCircle();
+        stopUpdatingCircle();
         status = 'off';
         btnArreterReprendre.innerHTML = "Reprendre";
     }
@@ -118,7 +122,7 @@ function btnAnnulerCollecteAction() {
     //stop the caller function of printing circle
     stopRetraceCourbe();
     clearCourbes();
-    stopCircle();
+    stopUpdatingCircle();
     status = 'off';
     btnArreterReprendre.innerHTML = "Commencer";
 }
@@ -140,13 +144,6 @@ function stopRetraceCourbe() {
     clearInterval(processForCourbe);
 }
 
-// function for the real color to print in the <p> element
-//function getColor(dms) {
-//    //TODO:
-//    switch (dms) {
-//
-//    }
-//}
 // to get the values for the arrays and call the fucntion traceCourbe()
 function getValuesForCharts() {
     var curentdateTime = getDate();
@@ -167,17 +164,6 @@ function getValuesForCharts() {
 
     //Update DB (insert value on DB)
     doInsertOnDB(curentdateTime, signalDbm, batterieLevel, batterieEnChargeInt, hashkey);
-}
-//this function gonna call every 5s the printer circle function on cercle.js
-function repeatCircle() {
-    //show the element view and call the printer cercle function
-    $('#cercleIndicor').show();
-    processCircle = setInterval(makeCircle(), 5000);
-}
-function stopCircle() {
-    //clear interval set and hide the element view
-    clearInterval(processCircle);
-    $('#cercleIndicor').hide();
 }
 
 function clearCourbes() {

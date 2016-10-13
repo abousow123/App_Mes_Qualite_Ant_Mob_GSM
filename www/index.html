@@ -36,7 +36,6 @@
 
                     <li data-role="list-divider">Code GSM</li>
                     <li><span id="gsm"></span></li>
-
                 </ul>
             </div>
 
@@ -53,7 +52,8 @@
             <div data-role="main" class="ui-content" id="idMonitoringPageMain">
                 <div id="graphics"></div>
                 <div id="graphics2" style="height: 300px; width: 100%;"></div>
-                <div id="containerCercleIndicator"><div id="cercleIndicor"></div></div>
+                <div id="cercleIndicor"></div>
+                <div id="circle"></div>
             </div>
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
@@ -75,8 +75,8 @@
         <script type="text/javascript" id="jqm-trans-disable">
             /* For having a faster transition */
             $(document).on("mobileinit", function () {
-                $.mobile.defaultPageTransition = "slide";
-                $.mobile.defaultDialogTransition = "flow";
+                $.mobile.defaultPageTransition = "none";
+                $.mobile.defaultDialogTransition = "none";
             });
         </script>
         <script type="text/javascript" src="js/Highcharts-4.2.7/js/highcharts.js"></script>
@@ -85,6 +85,8 @@
         <script type="text/javascript" src="js/Highcharts-4.2.7/js/themes/grid-light.js"></script>
         <script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script>
         <script type="text/javascript" src="js/jquery.canvasjs.min.js"></script>
+        <script type="text/javascript" src="js/CircularLoader-v1.3.js"></script>
+        <script type="text/javascript" src="js/jquery.circle-diagram.js"></script>
         <script type="text/javascript" src="js/sim_details.js"></script>
         <script type="text/javascript" src="js/device_details.js"></script>
         <script type="text/javascript" src="js/batterie_status.js"></script>

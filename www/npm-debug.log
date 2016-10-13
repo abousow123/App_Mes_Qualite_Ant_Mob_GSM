@@ -1,0 +1,126 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install', 'percircle' ]
+2 info using npm@3.5.2
+3 info using node@v4.2.6
+4 verbose config Skipping project config: /home/layely/.npmrc. (matches userconfig)
+5 silly loadCurrentTree Starting
+6 silly install loadCurrentTree
+7 silly install readLocalPackageData
+8 silly fetchPackageMetaData percircle
+9 silly fetchNamedPackageData percircle
+10 silly mapToRegistry name percircle
+11 silly mapToRegistry using default registry
+12 silly mapToRegistry registry https://registry.npmjs.org/
+13 silly mapToRegistry uri https://registry.npmjs.org/percircle
+14 verbose request uri https://registry.npmjs.org/percircle
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 3:07:39 AM
+17 verbose request id 8213485de100d88b
+18 verbose etag "39LT1YP13IUEPN5W5GM2WYF0A"
+19 http request GET https://registry.npmjs.org/percircle
+20 http 304 https://registry.npmjs.org/percircle
+21 verbose headers { date: 'Thu, 13 Oct 2016 03:07:40 GMT',
+21 verbose headers   via: '1.1 varnish',
+21 verbose headers   'cache-control': 'max-age=300',
+21 verbose headers   etag: '"39LT1YP13IUEPN5W5GM2WYF0A"',
+21 verbose headers   age: '25',
+21 verbose headers   connection: 'keep-alive',
+21 verbose headers   'x-served-by': 'cache-ams4123-AMS',
+21 verbose headers   'x-cache': 'HIT',
+21 verbose headers   'x-cache-hits': '1',
+21 verbose headers   'x-timer': 'S1476328060.047092,VS0,VE0',
+21 verbose headers   vary: 'Accept-Encoding' }
+22 silly get cb [ 304,
+22 silly get   { date: 'Thu, 13 Oct 2016 03:07:40 GMT',
+22 silly get     via: '1.1 varnish',
+22 silly get     'cache-control': 'max-age=300',
+22 silly get     etag: '"39LT1YP13IUEPN5W5GM2WYF0A"',
+22 silly get     age: '25',
+22 silly get     connection: 'keep-alive',
+22 silly get     'x-served-by': 'cache-ams4123-AMS',
+22 silly get     'x-cache': 'HIT',
+22 silly get     'x-cache-hits': '1',
+22 silly get     'x-timer': 'S1476328060.047092,VS0,VE0',
+22 silly get     vary: 'Accept-Encoding' } ]
+23 verbose etag https://registry.npmjs.org/percircle from cache
+24 verbose get saving percircle to /home/layely/.npm/registry.npmjs.org/percircle/.cache.json
+25 silly install normalizeTree
+26 silly loadCurrentTree Finishing
+27 silly loadIdealTree Starting
+28 silly install loadIdealTree
+29 silly cloneCurrentTree Starting
+30 silly install cloneCurrentTreeToIdealTree
+31 silly cloneCurrentTree Finishing
+32 silly loadShrinkwrap Starting
+33 silly install loadShrinkwrap
+34 silly loadShrinkwrap Finishing
+35 silly loadAllDepsIntoIdealTree Starting
+36 silly install loadAllDepsIntoIdealTree
+37 silly resolveWithNewModule percircle@1.0.17 checking installable status
+38 silly cache add args [ 'percircle', null ]
+39 verbose cache add spec percircle
+40 silly cache add parsed spec Result {
+40 silly cache add   raw: 'percircle',
+40 silly cache add   scope: null,
+40 silly cache add   name: 'percircle',
+40 silly cache add   rawSpec: '',
+40 silly cache add   spec: 'latest',
+40 silly cache add   type: 'tag' }
+41 silly addNamed percircle@latest
+42 verbose addNamed "latest" is being treated as a dist-tag for percircle
+43 info addNameTag [ 'percircle', 'latest' ]
+44 silly mapToRegistry name percircle
+45 silly mapToRegistry using default registry
+46 silly mapToRegistry registry https://registry.npmjs.org/
+47 silly mapToRegistry uri https://registry.npmjs.org/percircle
+48 verbose addNameTag registry:https://registry.npmjs.org/percircle not in flight; fetching
+49 verbose get https://registry.npmjs.org/percircle not expired, no request
+50 silly addNameTag next cb for percircle with tag latest
+51 silly addNamed percircle@1.0.17
+52 verbose addNamed "1.0.17" is a plain semver version for percircle
+53 silly cache afterAdd percircle@1.0.17
+54 verbose afterAdd /home/layely/.npm/percircle/1.0.17/package/package.json not in flight; writing
+55 verbose afterAdd /home/layely/.npm/percircle/1.0.17/package/package.json written
+56 silly loadAllDepsIntoIdealTree Finishing
+57 silly idealTree:prePrune layely
+57 silly idealTree:prePrune ├── highcharts@4.2.7
+57 silly idealTree:prePrune └── percircle@1.0.17
+58 silly loadIdealTree Finishing
+59 silly currentTree layely
+59 silly currentTree └── highcharts@4.2.7
+60 silly idealTree layely
+60 silly idealTree ├── highcharts@4.2.7
+60 silly idealTree └── percircle@1.0.17
+61 silly generateActionsToTake Starting
+62 silly install generateActionsToTake
+63 warn checkPermissions Missing write access to /home/layely/node_modules
+64 silly rollbackFailedOptional Starting
+65 silly rollbackFailedOptional Finishing
+66 silly runTopLevelLifecycles Starting
+67 silly runTopLevelLifecycles Finishing
+68 silly install printInstalled
+69 warn enoent ENOENT: no such file or directory, open '/home/layely/package.json'
+70 warn layely No description
+71 warn layely No repository field.
+72 warn layely No README data
+73 warn layely No license field.
+74 verbose stack Error: EACCES: permission denied, access '/home/layely/node_modules'
+74 verbose stack     at Error (native)
+75 verbose cwd /home/layely/NetBeansProjects/App_Mes_Qualite_Ant_Mob_GSM/www
+76 error Linux 4.4.0-38-generic
+77 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "percircle"
+78 error node v4.2.6
+79 error npm  v3.5.2
+80 error path /home/layely/node_modules
+81 error code EACCES
+82 error errno -13
+83 error syscall access
+84 error Error: EACCES: permission denied, access '/home/layely/node_modules'
+84 error     at Error (native)
+84 error  { [Error: EACCES: permission denied, access '/home/layely/node_modules']
+84 error   errno: -13,
+84 error   code: 'EACCES',
+84 error   syscall: 'access',
+84 error   path: '/home/layely/node_modules' }
+85 error Please try running this command again as root/Administrator.
+86 verbose exit [ -13, true ]
