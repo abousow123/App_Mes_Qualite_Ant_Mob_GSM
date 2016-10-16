@@ -2,90 +2,75 @@
  pie chart with the pourcentage in the middle
  the type is solidgauge it display a circle ,
  */
-function makeCircle() {
-    $(function () {
 
-        var gaugeOptions = {
-            chart: {
-                type: 'solidgauge' //the chart type
-            },
-            title: null,
-            pane: {
-                center: ['50%', '65%'], // with and heigth of the container graphics and i'm make some change for the correction
-                size: '100%', // and this one too
-                startAngle: -90,
-                endAngle: 90,
-                background: {
-                    backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
-                    innerRadius: '60%',
-                    outerRadius: '100%',
-                    shape: 'arc'
-                }
-            },
-            tooltip: {
-                enabled: true // for seeing toast info of the level
-            },
-            // the value axis
-            yAxis: {
-                stops: [// diplay colors
-                    [0.1, 'red'],
-                    [0.5, 'yellow'],
-                    [0.9, 'green']
-                ],
-                lineWidth: 0,
-                minorTickInterval: null,
-                tickAmount: 2,
-                title: {
-                    y: -70
-                },
-                labels: {
-                    y: 16
-                }
-            },
-            plotOptions: {
-                solidgauge: {
-                    dataLabels: {
-                        y: 5,
-                        borderWidth: 0,
-                        useHTML: true
-                    }
-                }
-            }
-        };
+var processUpdate;
+var updateCircleInterval = 120000;
 
-        // The speed gauge
-        $('#cercleIndicor').highcharts(Highcharts.merge(gaugeOptions, {
-            yAxis: {
-                min: 0,
-                max: 100,
-                title: {
-                    text: 'signal level'
-                }
-            },
-            credits: {
-                enabled: false
-            },
-            series: [{
-                    name: 'signal level',
-                    data: [80],
-                    dataLabels: {
-                        format: '<div style="text-align:center"><span style="font-size:25px;color:' +
-                                ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
-                                '<span style="font-size:12px;color:silver">Percent</span></div>'
-                    },
-                    tooltip: {
-                        valueSuffix: ' %'// percent personnalise of the Toast
-                    }
-                }]
-        }));
-        // Speed
+var greenColor = "#009000";
+var orangeColor = "#FBA625";
+var redColor = "#E01021";
+var pageBackground = "#F9F9F9";
 
-        // instence of a new chart variable declared at the top
-        var chart = $('#cercleIndicor').highcharts(),
-                point;
-        if (chart) {
-            point = chart.series[0].points[0];
-            point.update(Math.round((getSignalDbm() + 118) * (100 / 118)));
-        }
+var colorToSet = greenColor;
+var percent = 50;
+
+
+
+function startUpdatingCircle() {
+    processUpdate = setInterval(function () {
+        getData(setUpCircleParamAndDraw);
+    }, updateCircleInterval);
+}
+
+function stopUpdatingCircle() {
+    clearInterval(processUpdate);
+}
+
+function setUpCircleParamAndDraw(data) {
+    var sumSignal = 0;
+    var qualityPercent = 0;
+
+    for (var i = 0; i < data.length; i++) {
+        sumSignal = sumSignal + data[i].niveau_signal;
+    }
+
+    qualityPercent = Math.round(getSignalQualityPercent(sumSignal, data.length));
+
+    if (qualityPercent > 80) {
+        colorToSet = greenColor;
+    } else if (qualityPercent >= 60) {
+        colorToSet = orangeColor;
+    } else {
+        colorToSet = redColor;
+    }
+
+    percent = qualityPercent;
+
+    drawCircle();
+
+}
+
+function getSignalQualityPercent(totalsignal, nbLinesSaved) {
+    var moyenne;
+    var percent;
+    var minValueOfSignal = -110;
+    var maxValueOfSignal = -48;
+
+    moyenne = totalsignal / nbLinesSaved;
+    percent = (moyenne - minValueOfSignal) * 100 / (maxValueOfSignal - minValueOfSignal);
+
+    return percent;
+}
+
+function drawCircle() {
+    divCircle.innerHTML = "";
+    $('#circle').circleDiagram({
+        "percent": percent + "%",
+        "size": "80",
+        "borderWidth": "17",
+        "bgFill": "#e2e2e2",
+        "frFill": colorToSet,
+        "textSize": "40",
+        "textColor": colorToSet
     });
 }

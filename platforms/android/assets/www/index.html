@@ -9,20 +9,6 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
-        <style>
-            /* For avoiding title truncation in wp8 */
-
-            .ui-header .ui-title {
-                overflow: visible !important;
-            }
-            /* For fixing the absolute position issue for the default cordova gen page*/
-
-            #cjp-accordion1 .app {
-                left: 5px !important;
-                margin: 5px !important;
-                position: relative !important;
-            }
-        </style>
         <title>Hello World</title>
     </head>
 
@@ -30,8 +16,63 @@
 
         <!--La page d'accueil (de chargemement des informations-->
         <div data-role="page" id="idHomePage">
-            <div data-role="header" data-position="fixed" id="idHomePageHeader" style="text-align: center">
+            <div data-role="panel" id="myPanel" data-display="overlay" data-position-fixed="true">
+                <!--debut -->
+
+                 <div data-role="header" class="head1">
+                <h1>? AIDE</h1>
+            </div>
+        <div>
+            <p>
+                <strong>GSM Signal Monitoring </strong>
+                  est une application de Mesure de la qualité d'une antenne de Mobile GSM  
+               ,qui permet de faciliter le monitoring de l'utilisation de la qualité de l'antenne des téléphones.</br>
+                Elle mesure la qualité du signal en fonction du temps et du niveau de batterie.
+            </p>
+        </div>
+        
+
+
+        <div>
+            <h3>Systémes compatible </h3>
+            <strong>Cette application est compatible avec systemes suivants : </strong>
+            <ul>
+                <li>Android version 4 et + </li>
+                <li>Blackberry 10</li>
+            </ul>
+        </div>
+        <h3>Erreurs qui peuvent survenir </h3>
+        <div>TODO write content</div>
+        
+        <div>
+            <h3> A propos de l'application</h3>
+             <strong>GSM Signal Monitoring</strong> </br>
+            Version 1.0.0 </br>
+            Copyright (c) 2016</br>
+            
+             <strong>Contributeurs :</strong> 
+            <ul>
+                <li>Abdoulaye Oumar Ly</li>
+                <li>Pape Babacar Fall</li>
+                <li>Abou Sow</li>
+                <li>Baye Mbaye Badiane</li>
+                <li>Abdou Kane</li>
+            </ul>
+            <a href="https://github.com/abousow123/App_Mes_Qualite_Ant_Mob_GSM.git">
+             <strong> https://github.com/abousow123/App_Mes_Qualite_Ant_Mob_GSM.git</strong>
+            </a>
+           <p>
+            Tous droits réservés
+           </p>
+            
+        </div>
+        
+
+                <!--fin -->
+            </div>
+            <div data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
                 <h1>GSM Signal Monitoring</h1>
+                <a href="#myPanel" class="ui-btn ui-btn-right ui-icon-info ui-btn-icon-notext" style="background-color: rgba(54, 25, 25, .00004); border: none"></a>
             </div>
             <div data-role="main" class="ui-content">
                 <h2>Call details</h2>
@@ -50,31 +91,32 @@
 
                     <li data-role="list-divider">Code GSM</li>
                     <li><span id="gsm"></span></li>
-
                 </ul>
             </div>
 
-            <div data-role="footer" data-position="fixed" style="text-align: center">
+            <div data-role="footer" data-position="fixed" style="text-align: end">
                 <button class="ui-btn-active" id="btnCollecterDonnees">Collecter<br>Données</button>
             </div>
         </div>
         <!--La page de monitoring ici (@laye and @badiane)-->
         <div data-role="page" id="idMonitoringPage">
-            <div data-role="header" data-position="fixed" id="idHomePageHeader">
+            <div data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
                 <a href="#" class="ui-btn ui-icon-back ui-btn-icon-notext" data-rel="back"></a>
                 <h1>GSM Signal Monitoring</h1>
             </div>
             <div data-role="main" class="ui-content" id="idMonitoringPageMain">
                 <div id="graphics"></div>
-                <div id="containerCercleIndicator"><div id="cercleIndicor"></div></div>
-
-                <p id="idSignalText"></p>
+                <div id="graphics2" style="height: 300px; width: 100%;"></div>
+                <div id="cercleIndicor"></div>
+                <div id="circle"></div>
             </div>
-            <div data-role="footer" data-position="fixed" style="text-align: center">
-                <div data-role="controlgroup" data-type="horizontal">
-                    <button class="ui-btn-active" id="btnStartPauseCollecte">Arrêter</button>
-                    <button class="ui-btn-active" id="btnAnnulerCollecte">Annuler</button>
-                    <button class="ui-btn-active" id="btnExpCollecte">Exporter</button>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><button class="ui-btn-active" id="btnStartPauseCollecte">Arrêter</button></li>
+                        <li><button class="ui-btn-active" id="btnAnnulerCollecte">Annuler</button></li>
+                        <li><button class="ui-btn-active" id="btnExpCollecte">Exporter</button></li>
+                    </ul>
                 </div>
             </div>
             <div data-role="popup" id="popupBtnAnnuler">
@@ -88,8 +130,8 @@
         <script type="text/javascript" id="jqm-trans-disable">
             /* For having a faster transition */
             $(document).on("mobileinit", function () {
-                $.mobile.defaultPageTransition = "slide";
-                $.mobile.defaultDialogTransition = "flow";
+                $.mobile.defaultPageTransition = "none";
+                $.mobile.defaultDialogTransition = "none";
             });
         </script>
         <script type="text/javascript" src="js/Highcharts-4.2.7/js/highcharts.js"></script>
@@ -97,6 +139,9 @@
         <script type="text/javascript" src="js/Highcharts-4.2.7/js/modules/solid-gauge.js"></script>
         <script type="text/javascript" src="js/Highcharts-4.2.7/js/themes/grid-light.js"></script>
         <script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script>
+        <script type="text/javascript" src="js/jquery.canvasjs.min.js"></script>
+        <script type="text/javascript" src="js/CircularLoader-v1.3.js"></script>
+        <script type="text/javascript" src="js/jquery.circle-diagram.js"></script>
         <script type="text/javascript" src="js/sim_details.js"></script>
         <script type="text/javascript" src="js/device_details.js"></script>
         <script type="text/javascript" src="js/batterie_status.js"></script>
@@ -107,6 +152,7 @@
         <script type="text/javascript" src="js/csvfile.js"></script>
         <script type="text/javascript" src="js/email.js"></script>
         <script type="text/javascript" src="js/Cercle.js"></script>
+        <script type="text/javascript" src="js/graphics_canvasjs.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 
     </body>

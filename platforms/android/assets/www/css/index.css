@@ -4,11 +4,15 @@
     text-align: center;
 }*/
 
-
+h3{
+    color: #3333ff ;
+    text-decoration: underline ;
+}
 #btnCollecterDonnees /*Pour le rendre circulaire*/{
     width: 90px !important;
     height: 90px !important;
     border-radius: 50% !important;
+    margin-right: 15px !important;
     /*line-height: 100px;*/
 }
 
@@ -36,4 +40,35 @@ elements*/
 #cercleIndicor{
     width: auto;
     height: auto;
+}
+
+.ui-page .ui-header {
+    text-align: center !important;
+    background-color: #3388CC !important;
+    color: white !important;
+}
+
+.ui-page .ui-footer {
+    background-color: rgba(54, 25, 25, .00004) !important;
+    text-align: end;
+}
+
+
+/* For avoiding title truncation in wp8 */
+
+.ui-header .ui-title {
+    overflow: visible !important;
+}
+/* For fixing the absolute position issue for the default cordova gen page*/
+
+#cjp-accordion1 .app {
+    left: 5px !important;
+    margin: 5px !important;
+    position: relative !important;
+}
+
+
+#circle {
+    text-align: center !important;
+    margin: auto;
 }

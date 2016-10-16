@@ -4,7 +4,10 @@
     text-align: center;
 }*/
 
-
+h3{
+    color: #3333ff ;
+    text-decoration: underline ;
+}
 #btnCollecterDonnees /*Pour le rendre circulaire*/{
     width: 90px !important;
     height: 90px !important;
