@@ -32,17 +32,23 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
 
     onDeviceReady: function () {
-//        alert('index on device ready');
+        if (cordova.platformId == 'android') {
+            StatusBar.backgroundColorByHexString("#3388CC");
+        }
+
+        $("div[data-role='panel']").panel().enhanceWithin();
+
         btncollecterDonnees.addEventListener("click", btncollecterDonneesAction);
         btnArreterReprendre.addEventListener("click", btnArreterReprendreAction);
         btnAnnulerCollecte.addEventListener("click", btnAnnulerCollecteAction);
         btnExporterCollecte.addEventListener("click", btnExporterCollecteAction);
 
+
         setTimeout(function () {
             //@pape :ajout
             displayDeviceAndSimInfo();
 
-            setPanelUnderHeader()
+            setPanelUnderHeader();
 //            drawCircle();
             //Delete all data when starting
             doDeleteAll();
@@ -51,7 +57,7 @@ var app = {
             traceCourbe(tabBattry, tabSignal);
 //            make courbe just where device is ready
 //            retraceCourbe();
-
+            navigator.splashscreen.hide();
         }, 100);
     }
 };

@@ -59,6 +59,10 @@
                         {
                             "xml": "<feature name=\"EmailComposer\"><param name=\"android-package\" value=\"de.appplant.cordova.emailcomposer.EmailComposer\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -146,6 +150,9 @@
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
         "de.appplant.cordova.plugin.email-composer": {
+            "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
+        },
+        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         }
     },
@@ -461,6 +468,14 @@
                 "cordova.plugins.email",
                 "plugin.email"
             ]
+        },
+        {
+            "id": "cordova-plugin-statusbar.statusbar",
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -478,6 +493,7 @@
         "cordova-plugin-sqlite-2": "1.0.4",
         "cordova-plugin-whitelist": "1.3.0",
         "org.apache.cordova.signal-strength": "1.0.0",
-        "de.appplant.cordova.plugin.email-composer": "0.8.2"
+        "de.appplant.cordova.plugin.email-composer": "0.8.2",
+        "cordova-plugin-statusbar": "2.2.0"
     }
 }

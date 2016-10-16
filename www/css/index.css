@@ -72,3 +72,12 @@ elements*/
     text-align: center !important;
     margin: auto;
 }
+
+.ui-title {
+    margin: auto !important;
+}
+
+.ui-btn-icon-notext {
+    background-color: rgba(54, 25, 25, .00004) !important;
+    border: none !important;
+}

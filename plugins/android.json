@@ -48,6 +48,9 @@
         },
         "de.appplant.cordova.plugin.email-composer": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         }
     },
     "dependent_plugins": {

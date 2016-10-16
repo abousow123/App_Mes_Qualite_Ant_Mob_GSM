@@ -310,6 +310,14 @@ module.exports = [
             "cordova.plugins.email",
             "plugin.email"
         ]
+    },
+    {
+        "id": "cordova-plugin-statusbar.statusbar",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "pluginId": "cordova-plugin-statusbar",
+        "clobbers": [
+            "window.StatusBar"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -329,7 +337,8 @@ module.exports.metadata =
     "cordova-plugin-sqlite-2": "1.0.4",
     "cordova-plugin-whitelist": "1.3.0",
     "org.apache.cordova.signal-strength": "1.0.0",
-    "de.appplant.cordova.plugin.email-composer": "0.8.2"
+    "de.appplant.cordova.plugin.email-composer": "0.8.2",
+    "cordova-plugin-statusbar": "2.2.0"
 };
 // BOTTOM OF METADATA
 });
