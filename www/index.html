@@ -16,8 +16,13 @@
 
         <!--La page d'accueil (de chargemement des informations-->
         <div data-role="page" id="idHomePage">
+            <div data-role="panel" id="myPanel" data-display="overlay" data-position-fixed="true">
+                <h2>Page d'information ...</h2>
+                <div>Ici tu mets ton code..</div>
+            </div>
             <div data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
                 <h1>GSM Signal Monitoring</h1>
+                <a href="#myPanel" class="ui-btn ui-btn-right ui-icon-info ui-btn-icon-notext" style="background-color: rgba(54, 25, 25, .00004); border: none"></a>
             </div>
             <div data-role="main" class="ui-content">
                 <h2>Call details</h2>

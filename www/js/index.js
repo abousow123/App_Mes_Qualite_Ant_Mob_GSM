@@ -42,6 +42,7 @@ var app = {
             //@pape :ajout
             displayDeviceAndSimInfo();
 
+            setPanelUnderHeader()
 //            drawCircle();
             //Delete all data when starting
             doDeleteAll();
@@ -94,6 +95,7 @@ function displayDeviceAndSimInfo() {
     labelGSMCode.innerHTML = "" + getGSMCode();
 }
 
+
 function btncollecterDonneesAction() {
     $.mobile.changePage("#idMonitoringPage", {transition: "slide"});
     retraceCourbe();
@@ -110,7 +112,6 @@ function btnArreterReprendreAction() {
         startUpdatingCircle();
     } else {
         stopRetraceCourbe();
-        stopCircle();
         stopUpdatingCircle();
         status = 'off';
         btnArreterReprendre.innerHTML = "Reprendre";
@@ -170,4 +171,14 @@ function clearCourbes() {
     tabBattry = [];
     tabSignal = [];
     getValuesForCharts();
+}
+
+function setPanelUnderHeader() {
+    var header = $('[data-role=header]').outerHeight();
+    var panel = $('.ui-panel').height();
+    var panelheight = panel - header;
+    $('.ui-panel').css({
+        'top': header,
+        'min-height': panelheight
+    });
 }
