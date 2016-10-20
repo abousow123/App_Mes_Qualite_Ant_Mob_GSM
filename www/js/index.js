@@ -107,6 +107,7 @@ function btncollecterDonneesAction() {
     retraceCourbe();
     startChart();
     startUpdatingCircle();
+    tracerDynamicCourbe();
 }
 
 function btnArreterReprendreAction() {

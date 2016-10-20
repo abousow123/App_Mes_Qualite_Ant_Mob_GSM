@@ -21,9 +21,9 @@ h3{
     line-height: 70px;
 }
 /*this place used graphic for battry status and signal this width and height*/
-#graphics{
+#graphics2{
     width: 100%;
-    height: 60%;
+    height: 300px;
 }
 /*it's the container of the cercleIndicator
 this div element help to make easelly style on the cercleIndicators*/

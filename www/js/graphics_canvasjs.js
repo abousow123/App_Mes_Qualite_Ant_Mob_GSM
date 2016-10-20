@@ -13,7 +13,7 @@ function startChart() {
     var chart = new CanvasJS.Chart("graphics2", {
         zoomEnabled: true,
         title: {
-            text: "Signal / Batterie / Temps"
+            text: "Signal & Batterie = F(Temps)"
         },
         toolTip: {
             shared: true
@@ -27,7 +27,7 @@ function startChart() {
             fontColor: "dimGrey"
         },
         axisX: {
-            title: "chart updates every 30 secs"
+            title: ""
         },
         axisY: {
             prefix: '',
