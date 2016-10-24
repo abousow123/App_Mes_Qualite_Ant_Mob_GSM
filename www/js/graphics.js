@@ -1,6 +1,8 @@
 /*
  just trace two graphics  one for battry status and anther for signal
  */
+
+
 function traceCourbe(tabBattry, tabSignal) {
     $(function () {
         $('#graphics').highcharts({
@@ -9,6 +11,9 @@ function traceCourbe(tabBattry, tabSignal) {
             },
             title: {
                 text: 'Batterie & signal'
+            },
+            exporting: {
+                enabled: false
             },
             xAxis: {
             },
@@ -47,15 +52,18 @@ function tracerDynamicCourbe() {
                 events: {
                     load: function () {
 
+                        var serie1 = this.series[0];
+                        var serie2 = this.series[1];
+
                         // set  up the updating of the chart each second
-                        var series = this.series[0];
-                        var series2 = this.series[1];
                         setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                    yBatt = getBatterieLevel(),
-                                    ySig = getSignalDbm();
-                            series.addPoint([x, yBatt], true, false);
-                            series2.addPoint([x, ySig], true, false);
+                            if (!onPause) {
+                                var x = (new Date()).getTime(), // current time
+                                        yBatt = getBatterieLevel(),
+                                        ySig = getSignalDbm();
+                                serie1.addPoint([x, yBatt], true, false);
+                                serie2.addPoint([x, ySig], true, false);
+                            }
                         }, 1000);
                     }
                 }
@@ -127,3 +135,18 @@ function tracerDynamicCourbe() {
         });
     });
 }
+
+
+function destroyDynamicChart() {
+    $('#containerDynamicCourbe').highcharts().destroy();
+}
+
+function playDynamicChart() {
+    onPause = false;
+}
+
+function pauseDynamicChart() {
+    onPause = true;
+}
+
+var onPause = false;

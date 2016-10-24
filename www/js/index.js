@@ -52,6 +52,11 @@ var app = {
 //            drawCircle();
             //Delete all data when starting
             doDeleteAll();
+
+            //Hide the 1st chart (of Badiane)
+            $('#graphics').hide();
+
+
             //call once for printing the view of graphics
             // call take the values and make the graphics
             traceCourbe(tabBattry, tabSignal);
@@ -105,7 +110,7 @@ function displayDeviceAndSimInfo() {
 function btncollecterDonneesAction() {
     $.mobile.changePage("#idMonitoringPage", {transition: "slide"});
     retraceCourbe();
-    startChart();
+//    startChart();   //canvas chart
     startUpdatingCircle();
     tracerDynamicCourbe();
 }
@@ -115,22 +120,23 @@ function btnArreterReprendreAction() {
         status = 'on';
         btnArreterReprendre.innerHTML = "Arrêter";
         retraceCourbe();
-        repeatCircle();
         startUpdatingCircle();
+        playDynamicChart();
     } else {
         stopRetraceCourbe();
         stopUpdatingCircle();
         status = 'off';
         btnArreterReprendre.innerHTML = "Reprendre";
+        pauseDynamicChart();
     }
 }
 
 function btnAnnulerCollecteAction() {
-    stopPrintingSignalAndBatterie();
     //stop the caller function of printing circle
     stopRetraceCourbe();
     clearCourbes();
     stopUpdatingCircle();
+    destroyDynamicChart();
     status = 'off';
     btnArreterReprendre.innerHTML = "Commencer";
 }
