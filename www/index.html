@@ -21,7 +21,7 @@
                 <a href="#myPanel" class="ui-btn ui-btn-right ui-icon-info ui-btn-icon-notext"></a>
             </div>
             <div data-role="main" class="ui-content">
-                <h2>Call details</h2>
+                <h2>Téléphone</h2>
                 <ul data-role="listview" data-inset="true">
                     <li data-role="list-divider">Marque</li>
                     <li><span id="marque"></span></li>
@@ -47,7 +47,7 @@
         <!--La page de monitoring ici (@laye and @badiane)-->
         <div data-role="page" class="ui-body-a" id="idMonitoringPage">
             <div data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
-                <a href="#" class="ui-btn ui-icon-back ui-btn-icon-notext" data-rel="back"></a>
+                <!--<a href="#" class="ui-btn ui-icon-back ui-btn-icon-notext" data-rel="back"></a>-->
                 <h1>GSM Signal Monitoring</h1>
                 <a href="#myPanel" class="ui-btn ui-btn-right ui-icon-info ui-btn-icon-notext"></a>
             </div>
@@ -56,6 +56,7 @@
                 <!--<div id="graphics2" class="chart"></div>-->
                 <div id="containerDynamicCourbe" class="chart"></div>
                 <div id="circle"></div>
+                <p id="pauseTxt">Pause</p>
             </div>
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
@@ -74,33 +75,28 @@
         <div data-role="panel" class="ui-panel ui-body-a ui-panel-position-left ui-panel-display-reveal ui-panel-animate" id="myPanel" data-display="overlay" data-position-fixed="true">
             <!--debut -->
             <div data-role="header">
-                <h1>? AIDE</h1>
+                <h1>A propos de l'App</h1>
             </div>
             <div>
                 <p>
                     <strong>GSM Signal Monitoring </strong>
-                    est une application de Mesure de la qualité d'une antenne de Mobile GSM
-                    ,qui permet de faciliter le monitoring de l'utilisation de la qualité de l'antenne des téléphones.</br>
-                    Elle mesure la qualité du signal en fonction du temps et du niveau de batterie.
+                    est une application de mesure de la qualité
+                    du signal GSM en fonction du temps et du niveau de la batterie.
                 </p>
             </div>
             <div>
-                <h3>Systémes compatible </h3>
-                <strong>Cette application est compatible avec systemes suivants : </strong>
+                <h3>Systèmes compatibles</h3>
+                <strong>Cette application est entièrement compatible avec : </strong>
                 <ul>
                     <li>Android version 4 et + </li>
-                    <li>Blackberry 10</li>
                 </ul>
             </div>
-            <h3>Erreurs qui peuvent survenir </h3>
-            <div>TODO write content</div>
             <div>
-                <h3> A propos de l'application</h3>
-                <strong>GSM Signal Monitoring</strong> </br>
-                Version 1.0.0 </br>
-                Copyright (c) 2016</br>
-
-                <strong>Contributeurs :</strong>
+                <h3>En cas de bug</h3>
+                <p>Les bugs peuvent être reportés sur github (voir plus bas).</p>
+            </div>
+            <div>
+                <h3>Contributeurs :</h3>
                 <ul>
                     <li>Abdoulaye Oumar Ly</li>
                     <li>Pape Babacar Fall</li>
@@ -108,46 +104,50 @@
                     <li>Baye Mbaye Badiane</li>
                     <li>Abdou Kane</li>
                 </ul>
-                <a href="https://github.com/abousow123/App_Mes_Qualite_Ant_Mob_GSM.git">
-                    <strong> Voir github</strong>
-                </a>
-                <p>
-                    Tous droits réservés
-                </p>
-
             </div>
-            <!--fin -->
+            <div>
+                <strong>GSM Signal Monitoring</strong> <br>
+                Version 1.0.0 <br>
+                Copyright (c) 2016<br>
+            </div>
 
-            <script type="text/javascript" src="cordova.js"></script>
-            <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
-            <script type="text/javascript" id="jqm-trans-disable">
-                /* For having a faster transition */
-                $(document).on("mobileinit", function () {
-                    $.mobile.defaultPageTransition = "none";
-                    $.mobile.defaultDialogTransition = "none";
-                });
-            </script>
-            <script type="text/javascript" src="js/Highcharts-4.2.7/js/highcharts.js"></script>
-            <script type="text/javascript" src="js/Highcharts-4.2.7/js/highcharts-more.js"></script>
-            <script type="text/javascript" src="js/Highcharts-4.2.7/js/modules/solid-gauge.js"></script>
-            <script type="text/javascript" src="js/Highcharts-4.2.7/js/modules/exporting.js"></script>
-            <script type="text/javascript" src="js/Highcharts-4.2.7/js/themes/grid-light.js"></script>
-            <script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script>
-            <script type="text/javascript" src="js/jquery.canvasjs.min.js"></script>
-            <script type="text/javascript" src="js/CircularLoader-v1.3.js"></script>
-            <script type="text/javascript" src="js/jquery.circle-diagram.js"></script>
-            <script type="text/javascript" src="js/sim_details.js"></script>
-            <script type="text/javascript" src="js/device_details.js"></script>
-            <script type="text/javascript" src="js/batterie_status.js"></script>
-            <script type="text/javascript" src="js/date.js"></script>
-            <script type="text/javascript" src="js/signal_strength.js"></script>
-            <script type="text/javascript" src="js/database.js"></script>
-            <script type="text/javascript" src="js/graphics.js"></script>
-            <script type="text/javascript" src="js/csvfile.js"></script>
-            <script type="text/javascript" src="js/email.js"></script>
-            <script type="text/javascript" src="js/Cercle.js"></script>
-            <script type="text/javascript" src="js/graphics_canvasjs.js"></script>
-            <script type="text/javascript" src="js/index.js"></script>
+            <a href="https://github.com/abousow123/App_Mes_Qualite_Ant_Mob_GSM.git">
+                <strong> Voir sur github</strong>
+            </a>
+
+        </div>
+        <!--fin -->
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
+        <script type="text/javascript" id="jqm-trans-disable">
+            /* For having a faster transition */
+            $(document).on("mobileinit", function () {
+                $.mobile.defaultPageTransition = "none";
+                $.mobile.defaultDialogTransition = "none";
+            });
+        </script>
+        <script type="text/javascript" src="js/Highcharts-4.2.7/js/highcharts.js"></script>
+        <script type="text/javascript" src="js/Highcharts-4.2.7/js/highcharts-more.js"></script>
+        <script type="text/javascript" src="js/Highcharts-4.2.7/js/modules/solid-gauge.js"></script>
+        <script type="text/javascript" src="js/Highcharts-4.2.7/js/modules/exporting.js"></script>
+        <script type="text/javascript" src="js/Highcharts-4.2.7/js/themes/grid-light.js"></script>
+        <script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script>
+        <script type="text/javascript" src="js/jquery.canvasjs.min.js"></script>
+        <script type="text/javascript" src="js/CircularLoader-v1.3.js"></script>
+        <script type="text/javascript" src="js/jquery.circle-diagram.js"></script>
+        <script type="text/javascript" src="js/sim_details.js"></script>
+        <script type="text/javascript" src="js/device_details.js"></script>
+        <script type="text/javascript" src="js/batterie_status.js"></script>
+        <script type="text/javascript" src="js/date.js"></script>
+        <script type="text/javascript" src="js/signal_strength.js"></script>
+        <script type="text/javascript" src="js/database.js"></script>
+        <script type="text/javascript" src="js/graphics.js"></script>
+        <script type="text/javascript" src="js/csvfile.js"></script>
+        <script type="text/javascript" src="js/email.js"></script>
+        <script type="text/javascript" src="js/Cercle.js"></script>
+        <script type="text/javascript" src="js/graphics_canvasjs.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
 
     </body>
 </html>

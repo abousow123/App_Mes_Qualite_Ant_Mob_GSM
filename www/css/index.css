@@ -5,8 +5,10 @@
 }*/
 
 h3{
-    color: #3333ff ;
-    text-decoration: underline ;
+    color: whitesmoke !important;
+    width: 100% !important;
+    background-color: #3388CC !important;
+    text-align: center;
 }
 #btnCollecterDonnees /*Pour le rendre circulaire*/{
     width: 90px !important;
@@ -80,4 +82,19 @@ elements*/
 .ui-btn-icon-notext {
     background-color: rgba(54, 25, 25, .00004) !important;
     border: none !important;
+}
+
+#pauseTxt {
+    position: fixed;
+    width: 60px;
+    height: 20px;
+    top: 45%;
+    left: 45%;
+    margin-top: 0; /* Negative half of height. */
+    margin-left: 0; /* Negative half of width. */
+    opacity: 1;
+    text-align: center;
+    color: white !important;
+    background-color: #3388CC !important;
+    display: none;
 }

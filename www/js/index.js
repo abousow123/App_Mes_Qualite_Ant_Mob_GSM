@@ -38,6 +38,9 @@ var app = {
 
         $("div[data-role='panel']").panel().enhanceWithin();
 
+        //Capture the backbutton pressed event
+        document.addEventListener("backbutton", onBackKeyDown, false);
+
         btncollecterDonnees.addEventListener("click", btncollecterDonneesAction);
         btnArreterReprendre.addEventListener("click", btnArreterReprendreAction);
         btnAnnulerCollecte.addEventListener("click", btnAnnulerCollecteAction);
@@ -62,7 +65,10 @@ var app = {
             traceCourbe(tabBattry, tabSignal);
 //            make courbe just where device is ready
 //            retraceCourbe();
+
             navigator.splashscreen.hide();
+//            $('#idHomePage').removeClass('ui-body-a');
+//            $('#idHomePage').addClass('ui-body-b');
         }, 100);
     }
 };
@@ -113,6 +119,7 @@ function btncollecterDonneesAction() {
 //    startChart();   //canvas chart
     startUpdatingCircle();
     tracerDynamicCourbe();
+    monitoringOnPlay();
 }
 
 function btnArreterReprendreAction() {
@@ -122,23 +129,28 @@ function btnArreterReprendreAction() {
         retraceCourbe();
         startUpdatingCircle();
         playDynamicChart();
+        monitoringOnPlay();
     } else {
         stopRetraceCourbe();
         stopUpdatingCircle();
         status = 'off';
         btnArreterReprendre.innerHTML = "Reprendre";
         pauseDynamicChart();
+        monitoringOnPause();
     }
 }
 
 function btnAnnulerCollecteAction() {
-    //stop the caller function of printing circle
-    stopRetraceCourbe();
-    clearCourbes();
-    stopUpdatingCircle();
-    destroyDynamicChart();
-    status = 'off';
-    btnArreterReprendre.innerHTML = "Commencer";
+    navigator.notification.confirm(
+            'Voulez-vous vraiment annuler la collecte ?', // message
+            function (result) {
+                if (result == 1)
+                    annulerCollectes();
+            }, // callback to invoke with index of button pressed
+            '', // title
+            ['Oui', 'Non']     // buttonLabels
+            );
+
 }
 
 function btnExporterCollecteAction() {
@@ -194,4 +206,48 @@ function setPanelUnderHeader() {
         'top': header,
         'min-height': panelheight
     });
+}
+
+function goPreviousPage() {
+    navigator.app.backHistory();
+}
+
+function annulerCollectes() {
+    //stop the caller function of printing circle
+    goPreviousPage();
+    stopRetraceCourbe();
+    clearCourbes();
+    stopUpdatingCircle();
+    destroyDynamicChart();
+    status = 'off';
+    clearCircleDiv();
+//    btnArreterReprendre.innerHTML = "Commencer";
+}
+
+function onBackKeyDown() {
+    if ($.mobile.activePage.attr('id') === 'idMonitoringPage') {
+        btnAnnulerCollecteAction();
+    } else {
+        navigator.notification.confirm(
+                "Voulez-vous vraiment quittez l'application ?", // message
+                function (result) {
+                    if (result === 1)
+                        navigator.app.exitApp();
+                }, // callback to invoke with index of button pressed
+                '', // title
+                ['Oui', 'Non']     // buttonLabels
+                );
+    }
+}
+
+//Set the opactity of monitoring div at 50% and show Pause text in the middle of screen when capture on pause
+function monitoringOnPause() {
+    $("#idMonitoringPageMain").css({opacity: 0.5});
+    $("#pauseTxt").show();
+}
+
+//Revert the opacity to 100% and hide pause text when capture is being done.
+function monitoringOnPlay() {
+    $("#idMonitoringPageMain").css({opacity: 1});
+    $("#pauseTxt").hide();
 }

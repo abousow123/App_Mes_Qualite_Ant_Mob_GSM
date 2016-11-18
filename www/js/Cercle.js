@@ -63,7 +63,7 @@ function getSignalQualityPercent(totalsignal, nbLinesSaved) {
 }
 
 function drawCircle() {
-    divCircle.innerHTML = "";
+    clearCircleDiv();
     $('#circle').circleDiagram({
         "percent": percent + "%",
         "size": "80",
@@ -73,4 +73,8 @@ function drawCircle() {
         "textSize": "40",
         "textColor": colorToSet
     });
+}
+
+function clearCircleDiv() {
+    divCircle.innerHTML = "";
 }
