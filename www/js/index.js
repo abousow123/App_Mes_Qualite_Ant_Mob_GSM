@@ -141,10 +141,11 @@ function btnArreterReprendreAction() {
 }
 
 function btnAnnulerCollecteAction() {
+    navigator.notification.beep(1);
     navigator.notification.confirm(
             'Voulez-vous vraiment annuler la collecte ?', // message
             function (result) {
-                if (result == 1)
+                if (result === 1)
                     annulerCollectes();
             }, // callback to invoke with index of button pressed
             '', // title
@@ -228,6 +229,7 @@ function onBackKeyDown() {
     if ($.mobile.activePage.attr('id') === 'idMonitoringPage') {
         btnAnnulerCollecteAction();
     } else {
+        navigator.notification.beep(1);
         navigator.notification.confirm(
                 "Voulez-vous vraiment quittez l'application ?", // message
                 function (result) {
