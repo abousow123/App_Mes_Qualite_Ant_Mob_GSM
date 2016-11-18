@@ -114,12 +114,18 @@ function displayDeviceAndSimInfo() {
 
 
 function btncollecterDonneesAction() {
-    $.mobile.changePage("#idMonitoringPage", {transition: "slide"});
-    retraceCourbe();
+    if (isBatteriePlugged()) {
+        //Start collecte cause battery charging is plugged
+        $.mobile.changePage("#idMonitoringPage", {transition: "slide"});
+        retraceCourbe();
 //    startChart();   //canvas chart
-    startUpdatingCircle();
-    tracerDynamicCourbe();
-    monitoringOnPlay();
+        startUpdatingCircle();
+        tracerDynamicCourbe();
+        monitoringOnPlay();
+    } else {
+        //Battery is not charging so alert
+        showAlert("Assurer vous que votre téléphone est en mode charge puis relancez la collecte");
+    }
 }
 
 function btnArreterReprendreAction() {
@@ -252,4 +258,16 @@ function monitoringOnPause() {
 function monitoringOnPlay() {
     $("#idMonitoringPageMain").css({opacity: 1});
     $("#pauseTxt").hide();
+}
+
+function showAlert(message) {
+    navigator.notification.beep(1);
+    navigator.notification.alert(
+            message,
+            function () {
+
+            }, // callback
+            '', // title
+            'Ok'// buttonName
+            );
 }
