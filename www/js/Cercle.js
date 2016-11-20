@@ -54,7 +54,7 @@ function getSignalQualityPercent(totalsignal, nbLinesSaved) {
     var moyenne;
     var percent;
     var minValueOfSignal = -110;
-    var maxValueOfSignal = -48;
+    var maxValueOfSignal = -50;
 
     moyenne = totalsignal / nbLinesSaved;
     percent = (moyenne - minValueOfSignal) * 100 / (maxValueOfSignal - minValueOfSignal);
