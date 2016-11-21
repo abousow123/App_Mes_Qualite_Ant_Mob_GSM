@@ -1,8 +1,8 @@
-/*button {
-    width: 98%;
-    height: 40px;
-    text-align: center;
-}*/
+html {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
 
 h3{
     color: whitesmoke !important;
@@ -10,6 +10,12 @@ h3{
     background-color: #3388CC !important;
     text-align: center;
 }
+
+#homePageFooter {
+    display: none;
+    border-style: none !important;
+}
+
 #btnCollecterDonnees /*Pour le rendre circulaire*/{
     width: 90px !important;
     height: 90px !important;
@@ -96,5 +102,9 @@ elements*/
     text-align: center;
     color: white !important;
     background-color: #3388CC !important;
+    display: none;
+}
+
+#myPanel {
     display: none;
 }

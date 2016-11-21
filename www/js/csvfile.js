@@ -36,7 +36,9 @@ function createCSVFile() {
 function onSuccessLoadFs(fs) {
 //    alert('on onSuccessLoadFs \nfile system open: ' + fs.name);
     window.resolveLocalFileSystemURL(cordova.file.externalCacheDirectory, function (entry) {
-        createFile(entry, "test.csv", false);
+        var currentDate = new Date();
+        createFile(entry, "Captures__" + currentDate.getDate() + "_" + (currentDate.getMonth() + 1) + "_" +
+                currentDate.getFullYear() + "_" + currentDate.getHours() + "h" + currentDate.getMinutes() + ".csv", false);
     });
 }
 

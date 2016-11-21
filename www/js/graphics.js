@@ -149,4 +149,4 @@ function pauseDynamicChart() {
     onPause = true;
 }
 
-var onPause = false;
+var onPause = true;
