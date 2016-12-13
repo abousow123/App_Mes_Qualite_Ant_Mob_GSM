@@ -20,30 +20,32 @@ var txtToWrite = ""; //String que sera ecrit dans le fichier CSV
  */
 
 function createCSVAndSendByMail(data) {
-    alert('on createCSVAndSendByMail');
+//    alert('on createCSVAndSendByMail');
     formatToCSVString(data);
     createCSVFile();
 }
 
 
 function createCSVFile() {
-    alert('on createCSVFile');
+//    alert('on createCSVFile');
     window.requestFileSystem(window.PERSISTENT, 5 * 1024 * 102, onSuccessLoadFs, onErrorLoadFs);
 
 }
 
 
 function onSuccessLoadFs(fs) {
-    alert('on onSuccessLoadFs \nfile system open: ' + fs.name);
+//    alert('on onSuccessLoadFs \nfile system open: ' + fs.name);
     window.resolveLocalFileSystemURL(cordova.file.externalCacheDirectory, function (entry) {
-        createFile(entry, "test.csv", false);
+        var currentDate = new Date();
+        createFile(entry, "Captures__" + currentDate.getDate() + "_" + (currentDate.getMonth() + 1) + "_" +
+                currentDate.getFullYear() + "_" + currentDate.getHours() + "h" + currentDate.getMinutes() + ".csv", false);
     });
 }
 
 
 function createFile(dirEntry, fileName, isAppend) {
     // Creates a new file or returns the file if it already exists.
-    alert('on createFile');
+//    alert('on createFile');
     dirEntry.getFile(fileName, {create: true, exclusive: false}, function (fileEntry) {
 
         writeFile(fileEntry, null, isAppend);
@@ -54,17 +56,17 @@ function createFile(dirEntry, fileName, isAppend) {
 
 function writeFile(fileEntry, dataObj) {
     // Create a FileWriter object for our FileEntry.
-    alert('on writeFile');
+//    alert('on writeFile');
     fileEntry.createWriter(function (fileWriter) {
-        alert('on CreateWriter');
+//        alert('on CreateWriter');
         fileWriter.onwriteend = function () {
-            alert("Successful file write...");
+//            alert("Successful file write...");
             readFile(fileEntry);
             sendMail(fileEntry.toURL());
         };
 
         fileWriter.onerror = function (e) {
-            alert("Failed file write: " + e.toString());
+            alert("l'écriture dans le fichier a échoué: " + e.toString());
         };
 
         // create a new Blob
@@ -72,9 +74,9 @@ function writeFile(fileEntry, dataObj) {
 //        dataObj = new Blob(['' + txtToWrite], {type: 'text/plain'});
         var dataObj = newBlob(txtToWrite, 'text/plain');
 
-        alert('after creation new Blob');
+//        alert('after creation new Blob');
         fileWriter.write(dataObj);
-        alert('after fileWriter.write');
+//        alert('after fileWriter.write');
     });
 }
 
@@ -84,7 +86,7 @@ function readFile(fileEntry) {
         var reader = new FileReader();
 
         reader.onloadend = function () {
-            alert("Successful file read: \n" + fileEntry.fullPath + "\n" + fileEntry.toURL() + "\n" + this.result);
+//            alert("Successful file read: \n" + fileEntry.fullPath + "\n" + fileEntry.toURL() + "\n" + this.result);
         };
 
         reader.readAsText(file);
@@ -104,7 +106,7 @@ function readFile(fileEntry) {
  * @returns {Nothing}
  */
 function formatToCSVString(data) {
-    alert('on formatToCSVString');
+//    alert('on formatToCSVString');
     txtToWrite = "Horodatage,Niveau du Signal(en Db),Niveau de Batterie(Décibel),En charge,Hashkey\n";
 
     for (var i = 0; i < data.length; i++) {
@@ -128,7 +130,7 @@ function newBlob(data, datatype) {
     try {
         out = new Blob([data], {type: datatype});
         console.debug("Blob: case 1");
-        alert('Blob: case  1');
+//        alert('Blob: case  1');
     } catch (e) {
         window.BlobBuilder = window.BlobBuilder ||
                 window.WebKitBlobBuilder ||
@@ -140,19 +142,19 @@ function newBlob(data, datatype) {
             bb.append(data);
             out = bb.getBlob(datatype);
             console.debug("Blob: case 2");
-            alert('Blob: case  2');
+//            alert('Blob: case  2');
         } else if (e.name == "InvalidStateError") {
             // InvalidStateError (tested on FF13 WinXP)
             out = new Blob([data], {type: datatype});
             console.debug("Blob: case 3");
-            alert('Blob: case  3');
+//            alert('Blob: case  3');
         } else {
             // We're screwed, blob constructor unsupported entirely
             console.debug("Blob: Error");
-            alert('Blob: Error');
+//            alert('Blob: Error');
         }
     }
-    alert('about to return out');
+//    alert('about to return out');
     return out;
 }
 
@@ -162,13 +164,13 @@ function newBlob(data, datatype) {
  */
 
 function onErrorLoadFs() {
-    alert('Error: unable to load filesystem');
+    alert('Erreur: impossible de charger le system de fichier');
 }
 
 function onErrorCreateFile() {
-    alert('Error: unable to create the file');
+    alert('Erreur: impossible de créer le system de fichier');
 }
 
 function onErrorReadFile() {
-    alert('Error: unable to read the file');
+    alert('Erreur: impossible de lire le fichier');
 }

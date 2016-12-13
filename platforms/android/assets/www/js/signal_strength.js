@@ -8,6 +8,10 @@ document.addEventListener('deviceready', runSignalStrengthUpdater, false);
 var signalDbm = -3;
 
 function getSignalDbm() {
+    if (signalDbm > -48) //unable to find a value for now.
+        return getSignalDbm();
+    else if (signalDbm < -110) //Revert back to dbm.
+        return (signalDbm + 113) / 2;
     return signalDbm;
 }
 

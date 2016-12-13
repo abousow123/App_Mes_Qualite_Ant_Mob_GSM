@@ -1,13 +1,21 @@
-/*button {
-    width: 98%;
-    height: 40px;
-    text-align: center;
-}*/
+html {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
 
 h3{
-    color: #3333ff ;
-    text-decoration: underline ;
+    color: whitesmoke !important;
+    width: 100% !important;
+    background-color: #3388CC !important;
+    text-align: center;
 }
+
+#homePageFooter {
+    display: none;
+    border-style: none !important;
+}
+
 #btnCollecterDonnees /*Pour le rendre circulaire*/{
     width: 90px !important;
     height: 90px !important;
@@ -21,9 +29,9 @@ h3{
     line-height: 70px;
 }
 /*this place used graphic for battry status and signal this width and height*/
-#graphics{
+#graphics2{
     width: 100%;
-    height: 60%;
+    height: 300px;
 }
 /*it's the container of the cercleIndicator
 this div element help to make easelly style on the cercleIndicators*/
@@ -80,4 +88,23 @@ elements*/
 .ui-btn-icon-notext {
     background-color: rgba(54, 25, 25, .00004) !important;
     border: none !important;
+}
+
+#pauseTxt {
+    position: fixed;
+    width: 60px;
+    height: 20px;
+    top: 45%;
+    left: 45%;
+    margin-top: 0; /* Negative half of height. */
+    margin-left: 0; /* Negative half of width. */
+    opacity: 1;
+    text-align: center;
+    color: white !important;
+    background-color: #3388CC !important;
+    display: none;
+}
+
+#myPanel {
+    display: none;
 }

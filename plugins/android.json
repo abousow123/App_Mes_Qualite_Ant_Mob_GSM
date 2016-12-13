@@ -40,16 +40,16 @@
         "cordova-plugin-sqlite-2": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
-        "org.apache.cordova.signal-strength": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
         "de.appplant.cordova.plugin.email-composer": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         },
-        "cordova-plugin-statusbar": {
+        "org.apache.cordova.signal-strength": {
             "PACKAGE_NAME": "com.coolappz.MonitoringdelaQualitedusignalGSM"
         }
     },

@@ -295,11 +295,11 @@ module.exports = [
         ]
     },
     {
-        "id": "org.apache.cordova.signal-strength.signal-strength",
-        "file": "plugins/org.apache.cordova.signal-strength/www/signal-strength.js",
-        "pluginId": "org.apache.cordova.signal-strength",
+        "id": "cordova-plugin-statusbar.statusbar",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "pluginId": "cordova-plugin-statusbar",
         "clobbers": [
-            "signal-strength"
+            "window.StatusBar"
         ]
     },
     {
@@ -312,11 +312,11 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-statusbar.statusbar",
-        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-        "pluginId": "cordova-plugin-statusbar",
+        "id": "org.apache.cordova.signal-strength.signal-strength",
+        "file": "plugins/org.apache.cordova.signal-strength/www/signal-strength.js",
+        "pluginId": "org.apache.cordova.signal-strength",
         "clobbers": [
-            "window.StatusBar"
+            "signal-strength"
         ]
     }
 ];
@@ -335,10 +335,10 @@ module.exports.metadata =
     "cordova-plugin-sim": "1.3.0",
     "cordova-plugin-splashscreen": "4.0.1-dev",
     "cordova-plugin-sqlite-2": "1.0.4",
+    "cordova-plugin-statusbar": "2.2.0",
     "cordova-plugin-whitelist": "1.3.0",
-    "org.apache.cordova.signal-strength": "1.0.0",
     "de.appplant.cordova.plugin.email-composer": "0.8.2",
-    "cordova-plugin-statusbar": "2.2.0"
+    "org.apache.cordova.signal-strength": "1.0.0"
 };
 // BOTTOM OF METADATA
 });
